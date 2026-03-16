@@ -3,16 +3,589 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scuola Materna — Parrocchia di Pieve Cesato</title>
+    <title>Scuola dell'Infanzia — Parrocchia di Pieve Cesato</title>
+    <meta
+      name="description"
+      content="Presentazione della Scuola dell'Infanzia di Pieve Cesato: spazi, offerta formativa, pasti, orari, quote e contatti per le iscrizioni."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/site-icon.png" />
+    <style>
+      .site-nav a[href='scuola-materna.html'] {
+        color: var(--brand);
+        background: rgba(41, 87, 211, 0.08);
+      }
+
+      .infanzia-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 5rem 0 2.5rem;
+      }
+
+      .infanzia-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(12, 26, 52, 0.78), rgba(12, 26, 52, 0.36)),
+          url('assets/infanzia/foto-infanzia/sfondo-infanzia.jpg') center/cover;
+        z-index: -2;
+      }
+
+      .infanzia-hero::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 160px;
+        background: linear-gradient(180deg, rgba(246, 247, 251, 0), var(--bg));
+        z-index: -1;
+      }
+
+      .infanzia-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+        gap: 1.8rem;
+        align-items: end;
+      }
+
+      .infanzia-hero-copy {
+        color: white;
+        padding: 1rem 0 3rem;
+      }
+
+      .infanzia-hero-copy .eyebrow {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .infanzia-hero-copy h1 {
+        font-size: clamp(2.8rem, 5vw, 5.2rem);
+        line-height: 0.95;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.04em;
+      }
+
+      .infanzia-hero-copy p {
+        max-width: 62ch;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .infanzia-hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+      }
+
+      .infanzia-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.85rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-weight: 600;
+      }
+
+      .infanzia-hero-card {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 28px;
+        box-shadow: 0 20px 50px rgba(12, 26, 52, 0.18);
+        padding: 1.8rem;
+      }
+
+      .infanzia-hero-card h2,
+      .infanzia-hero-card h3,
+      .infanzia-section-title,
+      .gallery-card h3,
+      .price-card h3,
+      .feature-list h3,
+      .contact-card h3 {
+        letter-spacing: -0.03em;
+      }
+
+      .infanzia-hero-card p,
+      .infanzia-hero-card li,
+      .feature-list li,
+      .contact-card p,
+      .price-card p,
+      .gallery-card p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .quick-facts {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .quick-facts li {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .quick-facts li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .quick-facts strong {
+        color: var(--text);
+      }
+
+      .infanzia-intro {
+        margin-top: -0.5rem;
+      }
+
+      .infanzia-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+        gap: 1.5rem;
+      }
+
+      .infanzia-panel,
+      .gallery-card,
+      .price-card,
+      .feature-list,
+      .contact-card {
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .infanzia-panel {
+        padding: 1.8rem;
+      }
+
+      .infanzia-section-title {
+        margin: 0 0 0.9rem;
+        font-size: clamp(1.55rem, 2vw, 2rem);
+      }
+
+      .infanzia-panel p,
+      .infanzia-panel li {
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .infanzia-panel ul {
+        margin: 1rem 0 0;
+        padding-left: 1.15rem;
+      }
+
+      .feature-list,
+      .price-card,
+      .contact-card,
+      .gallery-card {
+        padding: 1.5rem;
+      }
+
+      .feature-list ul,
+      .price-card ul {
+        margin: 1rem 0 0;
+        padding-left: 1.1rem;
+      }
+
+      .stack {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .gallery-shell {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+      }
+
+      .gallery-card {
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .gallery-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+      }
+
+      .gallery-card figure {
+        margin: 0;
+        height: 100%;
+        display: grid;
+      }
+
+      .gallery-card figcaption {
+        padding: 1rem 1rem 1.15rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .gallery-card.featured {
+        grid-column: span 7;
+      }
+
+      .gallery-card.featured img {
+        aspect-ratio: 1.35 / 1;
+      }
+
+      .gallery-card.tall {
+        grid-column: span 5;
+      }
+
+      .gallery-card.medium {
+        grid-column: span 4;
+      }
+
+      .gallery-card.small {
+        grid-column: span 3;
+      }
+
+      .fees-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .fee-pill {
+        padding: 1.15rem;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(41, 87, 211, 0.08), rgba(107, 140, 255, 0.14));
+        border: 1px solid rgba(41, 87, 211, 0.1);
+      }
+
+      .fee-pill strong {
+        display: block;
+        font-size: 1.45rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.25rem;
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.2rem;
+      }
+
+      .contact-actions .button {
+        flex: 1 1 220px;
+      }
+
+      .source-note {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 1080px) {
+        .infanzia-hero-grid,
+        .infanzia-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-card.featured,
+        .gallery-card.tall,
+        .gallery-card.medium,
+        .gallery-card.small {
+          grid-column: span 6;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .infanzia-hero {
+          padding-top: 3rem;
+        }
+
+        .quick-facts li {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+
+        .gallery-shell,
+        .fees-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-card.featured,
+        .gallery-card.tall,
+        .gallery-card.medium,
+        .gallery-card.small {
+          grid-column: auto;
+        }
+
+        .gallery-card img,
+        .gallery-card.featured img {
+          aspect-ratio: 1.12 / 1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong><span>Comunità, educazione, estate, fede</span></div></a><button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola Materna</a><a href="circolo-anspi.html">Circolo Anspi</a><a href="cree.html">CREE</a><a href="campi-estivi.html">Campi Estivi</a><a href="catechesi.html">Catechesi</a></nav></div></header>
-    <main><section class="page-hero"><div class="container org-hero"><div><p class="eyebrow">Scuola Materna</p><h1>Una pagina chiara per la vita scolastica quotidiana.</h1><p>Spazio dedicato a progetto educativo, avvisi, calendario e comunicazioni importanti per i genitori, con una grafica contemporanea e accessibile.</p><div class="info-strip"><span>Calendario scolastico</span><span>Comunicazioni</span><span>Progetti educativi</span></div></div><div class="content-card"><h3>Ultima news</h3><p><strong>Laboratorio creativo di Pasqua</strong><br />Settimana speciale con attività manuali, racconti e momenti condivisi.</p></div></div></section><section class="section"><div class="container content-grid"><article class="content-card"><h2>Contenuti ideali</h2><ul><li>presentazione scuola e staff</li><li>news e circolari</li><li>calendario attività</li><li>moduli o documenti scaricabili</li></ul></article><article class="content-card"><h2>Esperienza utente</h2><p>La pagina privilegia leggibilità, ordine e un tono familiare. Tutte le informazioni principali restano facilmente consultabili anche da telefono.</p></article><article class="content-card"><h2>Prossimo step</h2><p>Possiamo aggiungere sezioni con foto, modulistica, refezione, orari, iscrizioni e collegamenti rapidi.</p></article></div></section></main>
-    <footer class="site-footer"><div class="container footer-wrap"><p>Parrocchia di Pieve Cesato</p><p>Scuola Materna</p></div></footer>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong></div></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+        <nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola dell'Infanzia</a><a href="circolo-anspi.html">Circolo Anspi</a></nav>
+      </div>
+    </header>
+    <main>
+      <section class="infanzia-hero">
+        <div class="container infanzia-hero-grid">
+          <div class="infanzia-hero-copy">
+            <p class="eyebrow">Scuola dell'Infanzia</p>
+            <h1>Un ambiente ricco di esperienze, gioco e crescita condivisa.</h1>
+            <p>
+              La Scuola dell'Infanzia accoglie <strong>40 bambini dai 3 ai 6 anni</strong>, divisi in
+              <strong>due sezioni</strong>, con un progetto educativo che unisce relazione, scoperta,
+              creatività e vita all'aria aperta in un contesto immerso nel verde.
+            </p>
+            <div class="infanzia-hero-stats">
+              <span class="infanzia-stat">40 bambini</span>
+              <span class="infanzia-stat">3–6 anni</span>
+              <span class="infanzia-stat">2 sezioni</span>
+              <span class="infanzia-stat">4 insegnanti</span>
+              <span class="infanzia-stat">Lun–Ven · 8:00–16:30</span>
+            </div>
+          </div>
+          <aside class="infanzia-hero-card">
+            <p class="eyebrow">Informazioni rapide</p>
+            <h2>Scuola, iscrizioni e calendario</h2>
+            <ul class="quick-facts">
+              <li><strong>Calendario</strong><span>Da settembre a giugno, seguendo il calendario scolastico della Scuola Pubblica Statale.</span></li>
+              <li><strong>Luglio</strong><span>Nel mese di luglio la scuola funziona come <strong>CREM</strong>.</span></li>
+              <li><strong>Contatti</strong><span><a href="mailto:infanziacesato@gmail.com">infanziacesato@gmail.com</a><br /><a href="tel:+393703654073">370 3654073</a></span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section infanzia-intro">
+        <div class="container infanzia-grid">
+          <article class="infanzia-panel">
+            <p class="eyebrow">Presentazione</p>
+            <h2 class="infanzia-section-title">Nel verde, con spazi pensati per vivere bene ogni giornata</h2>
+            <p>
+              La scuola è situata in aperta campagna, immersa nel verde, con ampi spazi esterni, tra cui un
+              <strong>parco attrezzato ad uso esclusivo dei bimbi</strong>. L'ambiente sostiene il gioco, il
+              movimento, la relazione e un rapporto vivo con la natura e con il territorio.
+            </p>
+            <p>
+              Le due sezioni permettono di accogliere i bambini in modo curato e familiare, mantenendo al tempo
+              stesso una proposta educativa ricca, articolata e attenta alle diverse fasce d'età.
+            </p>
+          </article>
+
+          <div class="stack">
+            <aside class="feature-list">
+              <p class="eyebrow">Vita all'aria aperta</p>
+              <h3>Il territorio entra nella quotidianità scolastica</h3>
+              <p>
+                L'offerta formativa include l'esplorazione del territorio delle campagne, passeggiate e momenti
+                vissuti nei luoghi della comunità di Pieve Cesato. L'esterno diventa così parte concreta
+                dell'apprendimento.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container infanzia-grid">
+          <article class="infanzia-panel">
+            <p class="eyebrow">Spazi della scuola</p>
+            <h2 class="infanzia-section-title">Sezioni, salone, dormitorio e refettorio</h2>
+            <p>Gli spazi interni della scuola sono organizzati per offrire libertà di gioco, attività guidate e momenti di cura nella giornata:</p>
+            <ul>
+              <li><strong>Due sezioni</strong>, in cui i bambini giocano liberamente nei diversi angoli gioco oppure si dedicano ad attività di manipolazione, esperienze grafico-pittoriche e percorsi motori relativi agli itinerari programmati.</li>
+              <li><strong>Un salone-corridoio</strong>.</li>
+              <li><strong>Un dormitorio</strong> per il riposo pomeridiano.</li>
+              <li><strong>Un ampio refettorio</strong> dove ogni giorno vivono il momento del pranzo.</li>
+            </ul>
+          </article>
+
+          <aside class="feature-list">
+            <p class="eyebrow">Cucina e pasti</p>
+            <h3>Pasti preparati dalla cucina della scuola</h3>
+            <p>
+              I pasti sono preparati dalla cucina della scuola secondo le tabelle fornite dalle dietiste della
+              <strong>AUSL di Faenza</strong>.
+            </p>
+            <p>
+              Il cibo arriva quindi “appena sfornato” sulla tavola dei bambini e delle bambine e la cuoca è una
+              figura amata, accogliente ed educativa.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Galleria fotografica</p>
+            <h2>La Scuola dell'Infanzia in immagini</h2>
+            <p>
+              Tutte le fotografie ricevute sono state integrate nella pagina per raccontare ambienti, attività e
+              atmosfera della scuola.
+            </p>
+          </div>
+
+          <div class="gallery-shell">
+            <article class="gallery-card featured">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-1-infanzia.jpg" alt="Ambiente della Scuola dell'Infanzia di Pieve Cesato" />
+                <figcaption>Spazi ordinati, luminosi e progettati per accompagnare il gioco e la crescita.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card tall">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-2-infanzia.jpg" alt="Dettaglio degli spazi della Scuola dell'Infanzia" />
+                <figcaption>Ogni ambiente sostiene esperienze autonome, creative e relazionali.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-3-infanzia.jpg" alt="Sezione della Scuola dell'Infanzia con arredi e materiali" />
+                <figcaption>Le sezioni accolgono attività diverse, calibrate sulle età dei bambini.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-4-infanzia.jpg" alt="Spazi della scuola dedicati al gioco e alle attività" />
+                <figcaption>Manipolazione, grafica, movimento e gioco libero convivono nella quotidianità.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-5-infanzia.jpg" alt="Area interna della Scuola dell'Infanzia" />
+                <figcaption>La scuola favorisce scoperta, ritmo e benessere in ogni momento della giornata.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card small">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-6-infanzia.jpg" alt="Dettaglio fotografico della Scuola dell'Infanzia" />
+                <figcaption>Un contesto educativo sereno e familiare.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card small">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-7-infanzia.jpg" alt="Interno della Scuola dell'Infanzia di Pieve Cesato" />
+                <figcaption>Gli spazi accompagnano sia il lavoro guidato sia il gioco spontaneo.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card small">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-8-infanzia.jpg" alt="Ambiente della scuola per i bambini dai 3 ai 6 anni" />
+                <figcaption>La giornata scolastica alterna cura, attività, relazione e momenti condivisi.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/infanzia/foto-infanzia/foto-9-infanzia.jpg" alt="Un altro spazio della Scuola dell'Infanzia" />
+                <figcaption>Un ambiente vivo, pensato per crescere insieme nella bellezza e nella semplicità.</figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container infanzia-grid">
+          <article class="infanzia-panel">
+            <p class="eyebrow">Offerta formativa</p>
+            <h2 class="infanzia-section-title">Percorsi educativi lungo tutto l'anno scolastico</h2>
+            <p>La scuola propone un'offerta formativa articolata, capace di intrecciare esperienze quotidiane, attività strutturate e aperture verso il territorio:</p>
+            <ul>
+              <li><strong>Progetto Didattico Annuale</strong>, svolto durante l'intero anno scolastico, che coinvolge tutti i bambini di entrambe le sezioni, calibrando le attività alla fascia d'età.</li>
+              <li><strong>Percorso di Psicomotricità Relazionale</strong>, tenuto da una delle insegnanti.</li>
+              <li><strong>Percorso di inglese ludico-didattico</strong>.</li>
+              <li><strong>Progetti didattici interattivi</strong> in collaborazione con enti del territorio, come Pinacoteca, Teatro Masini ed esperti esterni.</li>
+              <li><strong>Vita all'aria aperta</strong>, con esplorazione del territorio delle campagne, passeggiate e momenti vissuti nei luoghi della comunità di Pieve Cesato.</li>
+            </ul>
+          </article>
+
+          <aside class="feature-list">
+            <p class="eyebrow">Orari</p>
+            <h3>Calendario scolastico</h3>
+            <p>
+              La scuola è attiva <strong>dal lunedì al venerdì</strong>, dal mese di <strong>settembre</strong> al
+              mese di <strong>giugno</strong>, dalle <strong>8:00 alle 16:30</strong>.
+            </p>
+            <p>
+              Nel mese di <strong>luglio</strong> la scuola funziona come <strong>CREM</strong>, mantenendo così una
+              continuità preziosa anche nel periodo estivo.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container infanzia-grid">
+          <article class="price-card">
+            <p class="eyebrow">Iscrizioni</p>
+            <h3>Quote di partecipazione</h3>
+            <div class="fees-grid">
+              <div class="fee-pill"><strong>100,00€</strong><span>Iscrizione annuale</span></div>
+              <div class="fee-pill"><strong>11,00€</strong><span>Quota assicurazione INAIL</span></div>
+              <div class="fee-pill"><strong>120€</strong><span>Mensile fisso</span></div>
+            </div>
+            <div class="fees-grid" style="margin-top: 0.9rem; grid-template-columns: repeat(2, minmax(0, 1fr));">
+              <div class="fee-pill"><strong>6,00€</strong><span>Pasto giornaliero</span></div>
+              <div class="fee-pill"><strong>20%</strong><span>Sconto sul secondo fratello</span></div>
+            </div>
+            <ul>
+              <li>Primo fratello: quota intera</li>
+              <li>Secondo fratello: sconto del <strong>20%</strong> sulla quota mensile</li>
+            </ul>
+          </article>
+
+          <aside class="contact-card">
+            <p class="eyebrow">Contatti scuola</p>
+            <h3>Per informazioni e iscrizioni</h3>
+            <p>Per le iscrizioni è possibile rivolgersi direttamente alla scuola.</p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="mailto:infanziacesato@gmail.com">Scrivi una email</a>
+              <a class="button button-secondary" href="tel:+393703654073">Chiama la scuola</a>
+            </div>
+            <p class="source-note">Fonte contenuti: <a href="https://www.parrocchiapievecesato.it/scuola-dellinfanzia/" target="_blank" rel="noopener noreferrer">parrocchiapievecesato.it/scuola-dellinfanzia</a></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container infanzia-grid">
+          <article class="price-card">
+            <p class="eyebrow">Documenti</p>
+            <h3>Download disponibili</h3>
+            <p>Scarica i documenti informativi e amministrativi relativi al Nido e alla Scuola dell'Infanzia.</p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="assets/documenti/regolamento-asilo-2024.pdf" download>Scarica il regolamento</a>
+              <a class="button button-secondary" href="assets/documenti/contributi-2024.pdf" download>Scarica contributi 2024</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="container footer-wrap"><p>Parrocchia di Pieve Cesato</p><p>Scuola dell'Infanzia</p></div></footer>
     <script src="script.js"></script>
   </body>
 </html>

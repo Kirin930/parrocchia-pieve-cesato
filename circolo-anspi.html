@@ -4,14 +4,392 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Circolo Anspi — Parrocchia di Pieve Cesato</title>
+    <meta
+      name="description"
+      content="Contatti, orari di apertura e riferimenti del Circolo Anspi di Pieve Cesato, con locandine condivisibili e mappa."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/site-icon.png" />
+    <style>
+      .site-nav a[href='circolo-anspi.html'] {
+        color: var(--brand);
+        background: rgba(41, 87, 211, 0.08);
+      }
+
+      .anspi-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 5rem 0 2.5rem;
+      }
+
+      .anspi-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(12, 26, 52, 0.82), rgba(12, 26, 52, 0.4)),
+          url('assets/anspi/foto-anspi/sfondo_anspi.jpg') center/cover;
+        z-index: -2;
+      }
+
+      .anspi-hero::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 160px;
+        background: linear-gradient(180deg, rgba(246, 247, 251, 0), var(--bg));
+        z-index: -1;
+      }
+
+      .anspi-hero-grid,
+      .anspi-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 1.6rem;
+      }
+
+      .anspi-hero-grid {
+        align-items: end;
+      }
+
+      .anspi-hero-copy {
+        color: white;
+        padding: 1rem 0 3rem;
+      }
+
+      .anspi-hero-copy .eyebrow {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .anspi-hero-copy h1 {
+        font-size: clamp(2.8rem, 5vw, 5rem);
+        line-height: 0.95;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.04em;
+      }
+
+      .anspi-hero-copy p {
+        max-width: 62ch;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .anspi-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+      }
+
+      .anspi-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.85rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-weight: 600;
+      }
+
+      .anspi-hero-card,
+      .anspi-panel,
+      .map-card,
+      .program-card {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .anspi-hero-card,
+      .anspi-panel,
+      .map-card,
+      .program-card {
+        padding: 1.6rem;
+      }
+
+      .anspi-hero-card h2,
+      .anspi-panel h2,
+      .map-card h3,
+      .program-card h3 {
+        letter-spacing: -0.03em;
+        margin-top: 0;
+      }
+
+      .anspi-hero-card p,
+      .anspi-panel p,
+      .map-card p,
+      .contact-list a,
+      .contact-list span,
+      .program-actions a {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .hero-card-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .hero-card-top img {
+        width: min(92px, 28%);
+        height: auto;
+        display: block;
+        flex: 0 0 auto;
+      }
+
+      .quick-facts {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .quick-facts li {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .quick-facts li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .quick-facts strong,
+      .contact-list strong {
+        color: var(--text);
+      }
+
+      .section-title {
+        margin: 0 0 0.9rem;
+        font-size: clamp(1.55rem, 2vw, 2rem);
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .contact-item {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        gap: 0.9rem;
+        align-items: start;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .contact-item:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .mini-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(41, 87, 211, 0.08);
+        color: var(--brand);
+        font-size: 0.82rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .contact-actions,
+      .program-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.25rem;
+      }
+
+      .contact-actions .button,
+      .program-actions .button {
+        flex: 1 1 220px;
+      }
+
+      .map-frame {
+        width: 100%;
+        height: 420px;
+        border: 0;
+        border-radius: 18px;
+        display: block;
+        margin-top: 1rem;
+      }
+
+      .program-card {
+        text-align: center;
+      }
+
+      .program-card a.poster-link {
+        display: inline-block;
+        margin: 0 auto;
+      }
+
+      .program-card img {
+        width: min(100%, 560px);
+        border-radius: 18px;
+        display: block;
+        margin: 0 auto;
+        border: 1px solid rgba(28, 36, 48, 0.08);
+        box-shadow: 0 14px 32px rgba(12, 26, 52, 0.12);
+      }
+
+      .program-actions {
+        justify-content: center;
+      }
+
+      .program-actions .button {
+        flex: 0 1 auto;
+        padding: 0.8rem 1rem;
+        font-size: 0.92rem;
+      }
+
+      .program-actions .button-primary {
+        color: white;
+      }
+
+      @media (max-width: 980px) {
+        .anspi-hero-grid,
+        .anspi-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .anspi-hero {
+          padding-top: 3rem;
+        }
+
+        .quick-facts li {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+
+        .hero-card-top {
+          align-items: center;
+        }
+
+        .hero-card-top img {
+          width: 72px;
+        }
+
+        .map-frame {
+          height: 320px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong><span>Comunità, educazione, estate, fede</span></div></a><button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola Materna</a><a href="circolo-anspi.html">Circolo Anspi</a><a href="cree.html">CREE</a><a href="campi-estivi.html">Campi Estivi</a><a href="catechesi.html">Catechesi</a></nav></div></header>
-    <main><section class="page-hero"><div class="container org-hero"><div><p class="eyebrow">Circolo Anspi</p><h1>Un punto di incontro vivo per tutta la comunità.</h1><p>Questa sezione valorizza eventi, vita dell’oratorio, appuntamenti comunitari e iniziative aperte a famiglie, ragazzi e volontari.</p><div class="info-strip"><span>Eventi</span><span>Oratorio</span><span>Comunità</span></div></div><div class="content-card"><h3>Ultima news</h3><p><strong>Serata comunitaria in oratorio</strong><br />Cena insieme, giochi e occasione di incontro per tutte le età.</p></div></div></section><section class="section"><div class="container content-grid"><article class="content-card"><h2>Contenuti ideali</h2><ul><li>programmazione eventi</li><li>iniziative del circolo</li><li>spazi per volontari e iscrizioni</li><li>gallerie e racconti della comunità</li></ul></article><article class="content-card"><h2>Stile della pagina</h2><p>Più dinamica e conviviale, ma sempre ordinata. L’obiettivo è far percepire apertura, vitalità e semplicità d’accesso.</p></article><article class="content-card"><h2>Prossimo step</h2><p>Possiamo aggiungere calendario mensile, moduli di tesseramento e una sezione dedicata alle feste parrocchiali.</p></article></div></section></main>
+    <header class="site-header"><div class="container nav-wrap"><a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong></div></a><button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button><nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola dell'Infanzia</a><a href="circolo-anspi.html">Circolo Anspi</a></nav></div></header>
+    <main>
+      <section class="anspi-hero">
+        <div class="container anspi-hero-grid">
+          <div class="anspi-hero-copy">
+            <p class="eyebrow">Circolo Anspi</p>
+            <h1>Un luogo semplice, vivo e aperto alla comunità.</h1>
+            <p>
+              Il Circolo Anspi di Pieve Cesato è uno spazio di incontro e socialità, facilmente raggiungibile
+              e pensato per restare vicino alla vita quotidiana della comunità.
+            </p>
+            <div class="anspi-badges">
+              <a class="anspi-badge" href="#programma">Vai al programma</a>
+            </div>
+          </div>
+          <aside class="anspi-hero-card">
+            <div class="hero-card-top">
+              <div>
+                <p class="eyebrow">Informazioni rapide</p>
+                <h2>Contatti e orari</h2>
+              </div>
+              <img src="assets/anspi/foto-anspi/logo-anspi.png" alt="Logo del Circolo Anspi Pieve Cesato" />
+            </div>
+            <ul class="quick-facts">
+              <li><strong>Indirizzo</strong><span>Via Accarisi 55, Faenza (RA)</span></li>
+              <li><strong>Email</strong><span><a href="mailto:anspipievecesato@gmail.com">anspipievecesato@gmail.com</a></span></li>
+              <li><strong>Telefono</strong><span><a href="tel:+390546040294">0546040294</a></span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container anspi-grid">
+          <article class="anspi-panel">
+            <p class="eyebrow">Riferimenti</p>
+            <h2 class="section-title">Tutto l'essenziale, in modo chiaro</h2>
+            <div class="contact-list">
+              <div class="contact-item">
+                <div class="mini-icon">⌂</div>
+                <div><strong>Indirizzo</strong><br /><span>Via Accarisi 55, Faenza (RA)</span></div>
+              </div>
+              <div class="contact-item">
+                <div class="mini-icon">@</div>
+                <div><strong>Email</strong><br /><a href="mailto:anspipievecesato@gmail.com">anspipievecesato@gmail.com</a></div>
+              </div>
+              <div class="contact-item">
+                <div class="mini-icon">☎</div>
+                <div><strong>Telefono</strong><br /><a href="tel:+390546040294">0546040294</a></div>
+              </div>
+              <div class="contact-item">
+                <div class="mini-icon">f</div>
+                <div><strong>Facebook</strong><br /><a href="https://it-it.facebook.com/AnspiPieveCesato" target="_blank" rel="noopener noreferrer">Anspi Pieve Cesato</a></div>
+              </div>
+              <div class="contact-item">
+                <div class="mini-icon">🕒</div>
+                <div><strong>Orari apertura</strong><br /><span>Lunedì-Sabato 20:30-23:00<br />Domenica 8:00-10:00, 14:30-23:00</span></div>
+              </div>
+            </div>
+            <div class="contact-actions">
+              <a class="button button-primary" href="mailto:anspipievecesato@gmail.com">Scrivi una email</a>
+              <a class="button button-secondary" href="tel:+390546040294">Chiama il circolo</a>
+            </div>
+          </article>
+
+          <aside class="map-card">
+            <p class="eyebrow">Mappa</p>
+            <h3>Dove trovarci</h3>
+            <iframe
+              class="map-frame"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5551.126661532576!2d11.965019234712!3d44.33883978554376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132b530ad423476f%3A0xbf4c0e662640fb43!2sParrocchia%20di%20Pieve%20Cesato%20-%20Circolo%20Anspi%20Scuola%20Materna!5e0!3m2!1sit!2sit!4v1773626051784!5m2!1sit!2sit"
+              title="Mappa Circolo Anspi"
+            ></iframe>
+          </aside>
+        </div>
+      </section>
+
+      <section id="programma" class="section section-muted">
+        <div class="container">
+          <article class="program-card">
+            <p class="eyebrow">Programma</p>
+            <img src="assets/anspi/foto-anspi/Programma_Inverno_Anspi.jpeg" alt="Programma invernale del Circolo Anspi" />
+            <div class="program-actions">
+              <a class="button button-primary" href="assets/anspi/foto-anspi/programma-inverno-anspi-condivisibile.jpeg" download>Scarica il programma</a>
+              <a class="button button-secondary" href="assets/anspi/foto-anspi/programma-inverno-anspi-condivisibile.jpeg" target="_blank" rel="noopener noreferrer">Apri immagine</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
     <footer class="site-footer"><div class="container footer-wrap"><p>Parrocchia di Pieve Cesato</p><p>Circolo Anspi</p></div></footer>
     <script src="script.js"></script>
   </body>

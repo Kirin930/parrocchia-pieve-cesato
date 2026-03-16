@@ -3,43 +3,584 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nido — Parrocchia di Pieve Cesato</title>
+    <title>Nido Don Bosco — Parrocchia di Pieve Cesato</title>
+    <meta
+      name="description"
+      content="Presentazione del Nido Don Bosco di Pieve Cesato: spazi, progetto educativo, psicomotricità, orari, quote e contatti per le iscrizioni."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/site-icon.png" />
+    <style>
+      .site-nav a[href='nido.html'] {
+        color: var(--brand);
+        background: rgba(41, 87, 211, 0.08);
+      }
+
+      .nido-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 5rem 0 2.5rem;
+      }
+
+      .nido-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(12, 26, 52, 0.78), rgba(12, 26, 52, 0.36)),
+          url('assets/nido/foto-Nido/Sfondo-Nido.jpg') center/cover;
+        z-index: -2;
+      }
+
+      .nido-hero::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 160px;
+        background: linear-gradient(180deg, rgba(246, 247, 251, 0), var(--bg));
+        z-index: -1;
+      }
+
+      .nido-hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+        gap: 1.8rem;
+        align-items: end;
+      }
+
+      .nido-hero-copy {
+        color: white;
+        padding: 1rem 0 3rem;
+      }
+
+      .nido-hero-copy .eyebrow {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .nido-hero-copy h1 {
+        font-size: clamp(2.8rem, 5vw, 5.2rem);
+        line-height: 0.95;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.04em;
+      }
+
+      .nido-hero-copy p {
+        max-width: 62ch;
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 1.05rem;
+        line-height: 1.75;
+      }
+
+      .nido-hero-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+      }
+
+      .nido-stat {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.85rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-weight: 600;
+      }
+
+      .nido-hero-card {
+        background: rgba(255, 255, 255, 0.92);
+        border-radius: 28px;
+        box-shadow: 0 20px 50px rgba(12, 26, 52, 0.18);
+        padding: 1.8rem;
+      }
+
+      .nido-hero-card h2,
+      .nido-hero-card h3,
+      .nido-section-title,
+      .gallery-card h3,
+      .price-card h3,
+      .feature-list h3,
+      .contact-card h3 {
+        letter-spacing: -0.03em;
+      }
+
+      .nido-hero-card p,
+      .nido-hero-card li,
+      .feature-list li,
+      .contact-card p,
+      .price-card p,
+      .gallery-card p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .quick-facts {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .quick-facts li {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .quick-facts li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .quick-facts strong {
+        color: var(--text);
+      }
+
+      .nido-intro {
+        margin-top: -0.5rem;
+      }
+
+      .nido-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+        gap: 1.5rem;
+      }
+
+      .nido-panel,
+      .gallery-card,
+      .price-card,
+      .feature-list,
+      .contact-card {
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .nido-panel {
+        padding: 1.8rem;
+      }
+
+      .nido-section-title {
+        margin: 0 0 0.9rem;
+        font-size: clamp(1.55rem, 2vw, 2rem);
+      }
+
+      .nido-panel p,
+      .nido-panel li {
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .nido-panel ul {
+        margin: 1rem 0 0;
+        padding-left: 1.15rem;
+      }
+
+      .feature-list,
+      .price-card,
+      .contact-card,
+      .gallery-card {
+        padding: 1.5rem;
+      }
+
+      .feature-list ul,
+      .price-card ul {
+        margin: 1rem 0 0;
+        padding-left: 1.1rem;
+      }
+
+      .stack {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .gallery-shell {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 1rem;
+      }
+
+      .gallery-card {
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .gallery-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+      }
+
+      .gallery-card figure {
+        margin: 0;
+        height: 100%;
+        display: grid;
+      }
+
+      .gallery-card figcaption {
+        padding: 1rem 1rem 1.15rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .gallery-card.featured {
+        grid-column: span 7;
+      }
+
+      .gallery-card.featured img {
+        aspect-ratio: 1.35 / 1;
+      }
+
+      .gallery-card.tall {
+        grid-column: span 5;
+      }
+
+      .gallery-card.medium {
+        grid-column: span 4;
+      }
+
+      .gallery-card.small {
+        grid-column: span 3;
+      }
+
+      .fees-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .fee-pill {
+        padding: 1.15rem;
+        border-radius: 18px;
+        background: linear-gradient(135deg, rgba(41, 87, 211, 0.08), rgba(107, 140, 255, 0.14));
+        border: 1px solid rgba(41, 87, 211, 0.1);
+      }
+
+      .fee-pill strong {
+        display: block;
+        font-size: 1.6rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.25rem;
+      }
+
+      .contact-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.2rem;
+      }
+
+      .contact-actions .button {
+        flex: 1 1 220px;
+      }
+
+      .source-note {
+        margin-top: 1rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 1080px) {
+        .nido-hero-grid,
+        .nido-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-card.featured,
+        .gallery-card.tall,
+        .gallery-card.medium,
+        .gallery-card.small {
+          grid-column: span 6;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .nido-hero {
+          padding-top: 3rem;
+        }
+
+        .quick-facts li {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+
+        .gallery-shell,
+        .fees-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-card.featured,
+        .gallery-card.tall,
+        .gallery-card.medium,
+        .gallery-card.small {
+          grid-column: auto;
+        }
+
+        .gallery-card img,
+        .gallery-card.featured img {
+          aspect-ratio: 1.12 / 1;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong><span>Comunità, educazione, estate, fede</span></div></a>
+        <a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong></div></a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
-        <nav id="site-nav" class="site-nav">
-          <a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola Materna</a><a href="circolo-anspi.html">Circolo Anspi</a><a href="cree.html">CREE</a><a href="campi-estivi.html">Campi Estivi</a><a href="catechesi.html">Catechesi</a>
-        </nav>
+        <nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola dell'Infanzia</a><a href="circolo-anspi.html">Circolo Anspi</a></nav>
       </div>
     </header>
     <main>
-      <section class="page-hero">
-        <div class="container org-hero">
-          <div>
-            <p class="eyebrow">Nido</p>
-            <h1>Uno spazio accogliente per i primi passi.</h1>
-            <p>Una pagina pensata per raccontare il progetto educativo, condividere avvisi importanti e aiutare le famiglie a trovare in modo rapido tutte le informazioni utili.</p>
-            <div class="info-strip"><span>Prima infanzia</span><span>Avvisi alle famiglie</span><span>Progetto educativo</span></div>
+      <section class="nido-hero">
+        <div class="container nido-hero-grid">
+          <div class="nido-hero-copy">
+            <p class="eyebrow">Nido “Don Bosco”</p>
+            <h1>Un luogo sereno dove crescere, giocare e sentirsi accolti.</h1>
+            <p>
+              Il Nido accoglie <strong>21 bambini dai 12 ai 36 mesi</strong> in un contesto immerso nel verde,
+              con spazi interni curati, un grande rapporto con l’aria aperta e un progetto educativo pensato
+              per accompagnare con attenzione i primi anni di vita.
+            </p>
+            <div class="nido-hero-stats">
+              <span class="nido-stat">21 bambini</span>
+              <span class="nido-stat">12–36 mesi</span>
+              <span class="nido-stat">4 operatrici</span>
+              <span class="nido-stat">Lun–Ven · 8:00–16:30</span>
+            </div>
           </div>
-          <div class="content-card"><h3>Ultima news</h3><p><strong>Open day di primavera</strong><br />Visita degli spazi, presentazione del nido e incontro con le educatrici.</p></div>
+          <aside class="nido-hero-card">
+            <p class="eyebrow">Informazioni rapide</p>
+            <h2>Iscrizioni e vita quotidiana</h2>
+            <ul class="quick-facts">
+              <li><strong>Calendario</strong><span>Da settembre a luglio, seguendo il calendario scolastico della scuola pubblica statale.</span></li>
+              <li><strong>Pasti</strong><span>Preparati dalla cucina della scuola secondo le tabelle delle dietiste AUSL di Faenza.</span></li>
+              <li><strong>Contatti</strong><span><a href="mailto:infanziacesato@gmail.com">infanziacesato@gmail.com</a><br /><a href="tel:+393703654073">370 3654073</a></span></li>
+            </ul>
+          </aside>
         </div>
       </section>
+
+      <section class="section nido-intro">
+        <div class="container nido-grid">
+          <article class="nido-panel">
+            <p class="eyebrow">Presentazione</p>
+            <h2 class="nido-section-title">Immerso nella campagna, vicino alla comunità</h2>
+            <p>
+              Il Nido è situato in aperta campagna, immerso nel verde, con ampi spazi esterni, tra cui un
+              <strong>parco attrezzato ad uso esclusivo dei bimbi</strong>. È un ambiente pensato per offrire
+              sicurezza, calma, autonomia e relazioni significative fin dai primi mesi.
+            </p>
+            <p>
+              Vivere il Nido significa anche sentirsi parte della comunità di <strong>Pieve Cesato</strong>, con un
+              ritmo quotidiano attento ai bisogni dei bambini e delle bambine, ma anche aperto al territorio e
+              alla sua bellezza.
+            </p>
+          </article>
+
+          <div class="stack">
+            <aside class="feature-list">
+              <p class="eyebrow">Vita all’aria aperta</p>
+              <h3>Il fuori è parte del progetto educativo</h3>
+              <p>
+                Esploriamo il territorio delle nostre campagne, facendo passeggiate e vivendo momenti e luoghi
+                della comunità di Pieve Cesato. Il contatto con l’esterno non è uno sfondo: è esperienza viva.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container nido-grid">
+          <article class="nido-panel">
+            <p class="eyebrow">Spazi interni</p>
+            <h2 class="nido-section-title">Ambienti organizzati per esplorare, imitare, creare</h2>
+            <p>Gli spazi interni della sezione sono suddivisi in più angoli, così da offrire ogni giorno esperienze diverse e adatte all’età:</p>
+            <ul>
+              <li>Angolo grafico-pittorico-manipolativo</li>
+              <li>Angolo della casa</li>
+              <li>Angolo delle costruzioni</li>
+              <li>Angolo lettura</li>
+              <li>Angolo dei travestimenti</li>
+            </ul>
+            <p>
+              È presente anche un <strong>dormitorio</strong> dove tutti i bimbi riposano insieme e un ampio
+              <strong>refettorio</strong> dove ogni giorno vivono il momento del pranzo in un clima educativo,
+              sereno e familiare.
+            </p>
+          </article>
+
+          <aside class="feature-list">
+            <p class="eyebrow">Cucina e pasti</p>
+            <h3>Cibo preparato a scuola, cura quotidiana</h3>
+            <p>
+              I pasti sono preparati dalla cucina della scuola secondo le tabelle fornite dalle dietiste della
+              <strong>AUSL di Faenza</strong>.
+            </p>
+            <p>
+              Il cibo arriva quindi “appena sfornato” sulla tavola dei bambini e delle bambine, e la cuoca è una
+              figura amata, accogliente ed educativa.
+            </p>
+          </aside>
+        </div>
+      </section>
+
       <section class="section">
-        <div class="container content-grid">
-          <article class="content-card"><h2>La pagina può includere</h2><ul><li>presentazione del nido e valori educativi</li><li>orari e riferimenti principali</li><li>news e comunicazioni alle famiglie</li><li>galleria fotografica degli spazi</li></ul></article>
-          <article class="content-card"><h2>Perché funziona</h2><p>Il tono è sereno, rassicurante e ordinato. La struttura mette al centro chiarezza, fiducia e facilità d’uso da smartphone.</p></article>
-          <article class="content-card"><h2>Prossimo step</h2><p>Questa pagina è pronta per essere riempita con testi reali, foto, contatti, iscrizioni e calendario attività.</p></article>
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Galleria fotografica</p>
+            <h2>Tutti gli spazi del Nido, in immagini</h2>
+            <p>
+              Una selezione completa delle fotografie ricevute, per mostrare ambienti, attività e atmosfera del
+              Nido Don Bosco.
+            </p>
+          </div>
+
+          <div class="gallery-shell">
+            <article class="gallery-card featured">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-1-Nido.jpg" alt="Spazio del Nido Don Bosco con materiali e arredi per i bambini" />
+                <figcaption>Ambienti pensati per favorire autonomia, gioco e benessere fin dai primi mesi.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card tall">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-2-nido.jpg" alt="Dettaglio degli spazi del Nido Don Bosco" />
+                <figcaption>Ogni angolo invita all’esplorazione e accompagna i ritmi della giornata.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-3-Nido.jpg" alt="Attrezzature e area interna del Nido" />
+                <figcaption>Spazi curati e accoglienti, pensati per il gioco e la relazione.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-4-Nido.jpg" alt="Ambiente del Nido Don Bosco dedicato alle attività dei bambini" />
+                <figcaption>Il Nido valorizza la scoperta, la manipolazione e il gioco simbolico.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card medium">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-5-Nido.jpg" alt="Area del Nido con arredi per l'attività educativa" />
+                <figcaption>Gli ambienti sostengono esperienze quotidiane semplici, belle e ben organizzate.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card small">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-6-Nido.jpg" alt="Spazio del Nido con giochi e arredi dedicati ai piccoli" />
+                <figcaption>Giocare, imitare, costruire, leggere.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card small">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-7-Nido.jpg" alt="Dettaglio fotografico degli interni del Nido Don Bosco" />
+                <figcaption>Un contesto sereno, ordinato e a misura di bambino.</figcaption>
+              </figure>
+            </article>
+            <article class="gallery-card small">
+              <figure>
+                <img src="assets/nido/foto-Nido/foto-8-Nido.jpg" alt="Un altro ambiente del Nido Don Bosco" />
+                <figcaption>Il Nido cresce insieme ai bambini, rispettando tempi e bisogni diversi.</figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container nido-grid">
+          <article class="nido-panel">
+            <p class="eyebrow">Progetto educativo</p>
+            <h2 class="nido-section-title">Un anno intero di esperienze condivise</h2>
+            <p>
+              Ogni anno viene svolto un progetto didattico che accompagna l’intero anno scolastico e coinvolge
+              tutti i bimbi della sezione, con attività declinate in base alla fascia di età.
+            </p>
+            <p>
+              Inoltre, i bimbi dai <strong>24 ai 36 mesi</strong> partecipano a un percorso di
+              <strong>psicomotricità relazionale</strong>, tenuto da una delle insegnanti della Scuola
+              dell’Infanzia.
+            </p>
+          </article>
+
+          <aside class="feature-list">
+            <p class="eyebrow">Orari</p>
+            <h3>Calendario scolastico</h3>
+            <p>
+              Il Nido è attivo <strong>dal lunedì al venerdì</strong>, dal mese di <strong>settembre</strong> al
+              mese di <strong>luglio</strong>, dalle <strong>8:00 alle 16:30</strong>.
+            </p>
+            <p>
+              L’organizzazione segue il calendario scolastico della scuola pubblica statale.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container nido-grid">
+          <article class="price-card">
+            <p class="eyebrow">Iscrizioni</p>
+            <h3>Quote di partecipazione</h3>
+            <div class="fees-grid">
+              <div class="fee-pill"><strong>100,00€</strong><span>Iscrizione annuale</span></div>
+              <div class="fee-pill"><strong>220,00€</strong><span>Mensile fisso</span></div>
+              <div class="fee-pill"><strong>6,00€</strong><span>Quota giornaliera pasto</span></div>
+            </div>
+            <ul>
+              <li>Primo fratello: quota intera</li>
+              <li>Secondo fratello: sconto del <strong>20%</strong> sulla quota mensile</li>
+            </ul>
+          </article>
+
+          <aside class="contact-card">
+            <p class="eyebrow">Contatti scuola</p>
+            <h3>Per informazioni e iscrizioni</h3>
+            <p>Per le iscrizioni è possibile rivolgersi direttamente alla scuola.</p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="mailto:infanziacesato@gmail.com">Scrivi una email</a>
+              <a class="button button-secondary" href="tel:+393703654073">Chiama la scuola</a>
+            </div>
+            <p class="source-note">Fonte contenuti: <a href="https://www.parrocchiapievecesato.it/nido/" target="_blank" rel="noopener noreferrer">parrocchiapievecesato.it/nido</a></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container nido-grid">
+          <article class="price-card">
+            <p class="eyebrow">Documenti</p>
+            <h3>Download disponibili</h3>
+            <p>Scarica i documenti informativi e amministrativi relativi al Nido e alla Scuola dell'Infanzia.</p>
+            <div class="contact-actions">
+              <a class="button button-primary" href="assets/documenti/regolamento-asilo-2024.pdf" download>Scarica il regolamento</a>
+              <a class="button button-secondary" href="assets/documenti/contributi-2024.pdf" download>Scarica contributi 2024</a>
+            </div>
+          </article>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-wrap"><p>Parrocchia di Pieve Cesato</p><p>Nido</p></div></footer>
+    <footer class="site-footer"><div class="container footer-wrap"><p>Parrocchia di Pieve Cesato</p><p>Nido “Don Bosco”</p></div></footer>
     <script src="script.js"></script>
   </body>
 </html>

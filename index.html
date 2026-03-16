@@ -6,7 +6,7 @@
     <title>Parrocchia di Pieve Cesato</title>
     <meta
       name="description"
-      content="Sito della Parrocchia di Pieve Cesato con news e pagine dedicate a Nido, Scuola Materna, Circolo Anspi, CREE, Campi Estivi e Catechesi."
+      content="Sito della Parrocchia di Pieve Cesato con news e pagine dedicate a Nido, Scuola dell'Infanzia e Circolo Anspi."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,92 +15,322 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/site-icon.png" />
+    <style>
+      .home-hero {
+        position: relative;
+        min-height: min(78vh, 760px);
+        display: flex;
+        align-items: end;
+        overflow: hidden;
+      }
+
+      .home-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(12, 26, 52, 0.18) 0%, rgba(12, 26, 52, 0.45) 48%, rgba(12, 26, 52, 0.78) 100%),
+          url('assets/home/sfondo-homepage.jpg') center/cover;
+        z-index: -2;
+      }
+
+      .home-hero::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 180px;
+        background: linear-gradient(180deg, rgba(246, 247, 251, 0), var(--bg));
+        z-index: -1;
+      }
+
+      .home-hero-content {
+        padding: 7rem 0 4rem;
+        color: white;
+        max-width: 760px;
+      }
+
+      .home-hero .eyebrow {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .home-hero h1 {
+        font-size: clamp(3rem, 6vw, 5.6rem);
+        line-height: 0.94;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.045em;
+      }
+
+      .home-hero p {
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1.06rem;
+        line-height: 1.8;
+        max-width: 60ch;
+      }
+
+      .home-hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 1.7rem;
+      }
+
+      .news-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .news-card {
+        position: relative;
+        display: grid;
+        grid-template-columns: 168px minmax(0, 1fr);
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+      }
+
+      .news-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(41, 87, 211, 0.14);
+      }
+
+      .news-card-thumb {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        display: block;
+        border-radius: 18px;
+      }
+
+      .news-card h3 {
+        margin: 0.3rem 0 0.45rem;
+        letter-spacing: -0.03em;
+        font-size: clamp(1.2rem, 2vw, 1.6rem);
+      }
+
+      .news-card p,
+      .news-overlay p {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .news-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-bottom: 0.35rem;
+      }
+
+      .news-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.42rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(41, 87, 211, 0.08);
+        color: var(--brand);
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+
+      .news-card-hint {
+        display: inline-flex;
+        margin-top: 0.65rem;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--brand);
+      }
+
+      .news-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 60;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.32s ease, visibility 0.32s ease;
+      }
+
+      .news-overlay.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .news-overlay-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 26, 52, 0.54);
+        backdrop-filter: blur(8px);
+      }
+
+      .news-overlay-panel {
+        position: relative;
+        width: min(1080px, calc(100vw - 2rem));
+        max-height: min(88vh, 940px);
+        overflow: auto;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 30px 80px rgba(12, 26, 52, 0.24);
+        border-radius: 32px;
+        transform: translateY(18px) scale(0.96);
+        transition: transform 0.34s ease;
+      }
+
+      .news-overlay.is-open .news-overlay-panel {
+        transform: translateY(0) scale(1);
+      }
+
+      .news-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(12, 26, 52, 0.68);
+        color: white;
+        font-size: 1.5rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .news-overlay-grid {
+        display: grid;
+        grid-template-columns: minmax(320px, 460px) minmax(0, 1fr);
+        gap: 0;
+      }
+
+      .news-overlay-media {
+        position: relative;
+        min-height: 100%;
+        background: linear-gradient(180deg, rgba(41, 87, 211, 0.08), rgba(41, 87, 211, 0.02));
+        padding: 1.25rem;
+      }
+
+      .news-overlay-media img {
+        width: 100%;
+        display: block;
+        border-radius: 24px;
+        border: 1px solid rgba(28, 36, 48, 0.08);
+        box-shadow: 0 18px 40px rgba(12, 26, 52, 0.14);
+      }
+
+      .share-actions,
+      .news-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .share-actions {
+        margin-top: 1rem;
+      }
+
+      .share-actions .button-primary {
+        color: white;
+      }
+
+      .news-overlay-body {
+        padding: 2rem 2rem 1.8rem;
+      }
+
+      .news-overlay-body h3 {
+        margin: 0.4rem 0 0.8rem;
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+      }
+
+      .news-overlay-body p {
+        font-size: 1rem;
+      }
+
+      .news-links {
+        margin-top: 1.2rem;
+      }
+
+      body.news-open {
+        overflow: hidden;
+      }
+
+      @media (max-width: 860px) {
+        .news-card,
+        .news-overlay-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .news-overlay-panel {
+          width: min(760px, calc(100vw - 1rem));
+          max-height: calc(100vh - 1rem);
+          border-radius: 24px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .home-hero {
+          min-height: 68vh;
+        }
+
+        .home-hero-content {
+          padding: 5rem 0 3rem;
+        }
+
+        .news-card {
+          padding: 0.9rem;
+        }
+
+        .news-overlay {
+          padding: 0.5rem;
+        }
+
+        .news-overlay-body {
+          padding: 1.15rem 1rem 1.1rem;
+        }
+
+        .news-overlay-media {
+          padding: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header">
       <div class="container nav-wrap">
-        <a class="brand" href="index.html">
-          <span class="brand-mark">✦</span>
-          <div>
-            <strong>Parrocchia di Pieve Cesato</strong>
-            <span>Comunità, educazione, estate, fede</span>
-          </div>
-        </a>
+        <a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong></div></a>
 
         <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
           <span></span><span></span><span></span>
         </button>
 
-        <nav id="site-nav" class="site-nav">
-          <a href="index.html">Home</a>
-          <a href="nido.html">Nido</a>
-          <a href="scuola-materna.html">Scuola Materna</a>
-          <a href="circolo-anspi.html">Circolo Anspi</a>
-          <a href="cree.html">CREE</a>
-          <a href="campi-estivi.html">Campi Estivi</a>
-          <a href="catechesi.html">Catechesi</a>
-        </nav>
+        <nav id="site-nav" class="site-nav"><a href="index.html" class="active">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola dell'Infanzia</a><a href="circolo-anspi.html">Circolo Anspi</a></nav>
       </div>
     </header>
 
     <main>
-      <section class="hero">
-        <div class="container hero-grid">
-          <div>
-            <p class="eyebrow">Benvenuti</p>
-            <h1>Un sito unico per tutta la vita della parrocchia.</h1>
-            <p class="hero-copy">
-              News, attività, percorsi educativi e iniziative raccolti in un unico spazio,
-              semplice da consultare da computer e smartphone.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#news">Leggi le news</a>
-              <a class="button button-secondary" href="#organizzazioni">Scopri le realtà</a>
-            </div>
-          </div>
-          <aside class="hero-card">
-            <p class="hero-card-label">In evidenza</p>
-            <h2>Una home che raccoglie tutto</h2>
-            <p>
-              La pagina principale aggrega aggiornamenti da Nido, Scuola Materna, Circolo
-              Anspi, CREE, Campi Estivi e Catechesi, così le famiglie trovano subito ciò che
-              conta.
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <section id="organizzazioni" class="section">
+      <section class="home-hero">
         <div class="container">
-          <div class="section-head">
-            <p class="eyebrow">Le realtà della parrocchia</p>
-            <h2>Ogni organizzazione ha la sua pagina dedicata</h2>
-          </div>
-          <div class="cards-grid">
-            <a class="feature-card" href="nido.html">
-              <h3>Nido</h3>
-              <p>Informazioni, avvisi e iniziative per la prima infanzia.</p>
-            </a>
-            <a class="feature-card" href="scuola-materna.html">
-              <h3>Scuola Materna</h3>
-              <p>Vita scolastica, calendario, progetti educativi e comunicazioni.</p>
-            </a>
-            <a class="feature-card" href="circolo-anspi.html">
-              <h3>Circolo Anspi</h3>
-              <p>Eventi, comunità, attività ricreative e appuntamenti.</p>
-            </a>
-            <a class="feature-card" href="cree.html">
-              <h3>CREE</h3>
-              <p>Centro ricreativo estivo con programmi, iscrizioni e news.</p>
-            </a>
-            <a class="feature-card" href="campi-estivi.html">
-              <h3>Campi Estivi</h3>
-              <p>Esperienze formative, dettagli logistici e aggiornamenti per le famiglie.</p>
-            </a>
-            <a class="feature-card" href="catechesi.html">
-              <h3>Catechesi</h3>
-              <p>Percorsi, incontri, sacramenti e risorse per bambini e famiglie.</p>
-            </a>
+          <div class="home-hero-content">
+            <p class="eyebrow">Parrocchia di Pieve Cesato</p>
+            <h1>Un luogo di comunità, educazione e vita condivisa.</h1>
+            <p>
+              Il sito raccoglie notizie, aggiornamenti e riferimenti utili delle realtà della
+              parrocchia, in uno spazio semplice da consultare e pensato per restare chiaro anche da smartphone.
+            </p>
+            <div class="home-hero-actions">
+              <a class="button button-primary" href="#news">Vai alle news</a>
+            </div>
           </div>
         </div>
       </section>
@@ -108,60 +338,70 @@
       <section id="news" class="section section-muted">
         <div class="container">
           <div class="section-head">
-            <p class="eyebrow">News aggregate</p>
-            <h2>Tutti gli aggiornamenti in un unico flusso</h2>
+            <p class="eyebrow">News</p>
+            <h2>Notizie e articoli della parrocchia</h2>
             <p>
-              Questa home è pensata per raccogliere le notizie pubblicate dalle diverse realtà
-              della parrocchia.
+              Qui compaiono gli aggiornamenti principali delle realtà educative e comunitarie della parrocchia.
             </p>
           </div>
 
-          <div class="news-grid">
-            <article class="news-card">
-              <span class="tag">Nido</span>
-              <h3>Open day di primavera</h3>
-              <p>Una giornata per visitare gli spazi, conoscere il progetto educativo e incontrare le famiglie.</p>
-              <time datetime="2026-03-20">20 marzo 2026</time>
-            </article>
-            <article class="news-card">
-              <span class="tag">Scuola Materna</span>
-              <h3>Laboratorio creativo di Pasqua</h3>
-              <p>Settimana speciale con attività manuali, colori e momenti condivisi.</p>
-              <time datetime="2026-03-22">22 marzo 2026</time>
-            </article>
-            <article class="news-card">
-              <span class="tag">Circolo Anspi</span>
-              <h3>Serata comunitaria in oratorio</h3>
-              <p>Un momento aperto a tutti con giochi, incontro e cena insieme.</p>
-              <time datetime="2026-03-25">25 marzo 2026</time>
-            </article>
-            <article class="news-card">
-              <span class="tag">CREE</span>
-              <h3>Pre-iscrizioni estate 2026</h3>
-              <p>Pubblicate le prime informazioni organizzative e le modalità di adesione.</p>
-              <time datetime="2026-04-02">2 aprile 2026</time>
-            </article>
-            <article class="news-card">
-              <span class="tag">Campi Estivi</span>
-              <h3>Presentazione ai genitori</h3>
-              <p>Incontro dedicato al programma, agli educatori e agli aspetti logistici.</p>
-              <time datetime="2026-04-08">8 aprile 2026</time>
-            </article>
-            <article class="news-card">
-              <span class="tag">Catechesi</span>
-              <h3>Calendario incontri aggiornato</h3>
-              <p>Disponibili le nuove date dei gruppi e dei momenti comunitari in parrocchia.</p>
-              <time datetime="2026-03-28">28 marzo 2026</time>
+          <div class="news-list">
+            <article class="news-card" data-news-open="iscrizioni-polo-2026" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-iscrizioni-polo-2026">
+              <img class="news-card-thumb" src="assets/home/iscrizioni-polo-infanzia-2026-2027.jpg" alt="Locandina iscrizioni aperte Polo d'Infanzia Don Bosco" />
+              <div>
+                <div class="news-chip-row">
+                  <span class="news-chip">Polo d'Infanzia</span>
+                  <span class="news-chip">A.S. 2026-2027</span>
+                </div>
+                <h3>Iscrizioni Aperte Polo d’Infanzia “Don Bosco”</h3>
+                <p>Aperte le iscrizioni per l’anno scolastico 2026-2027 del Polo d’Infanzia “Don Bosco”!</p>
+                <span class="news-card-hint">Leggi la news</span>
+              </div>
             </article>
           </div>
         </div>
       </section>
     </main>
 
+    <div class="news-overlay" id="news-overlay-iscrizioni-polo-2026" aria-hidden="true">
+      <div class="news-overlay-backdrop" data-news-close="iscrizioni-polo-2026"></div>
+      <div class="news-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="news-title-iscrizioni-polo-2026">
+        <button class="news-close" type="button" aria-label="Chiudi news" data-news-close="iscrizioni-polo-2026">×</button>
+        <div class="news-overlay-grid">
+          <div class="news-overlay-media">
+            <img src="assets/home/iscrizioni-polo-infanzia-2026-2027.jpg" alt="Locandina iscrizioni aperte Polo d'Infanzia Don Bosco" />
+            <div class="share-actions">
+              <a class="button button-primary" href="assets/home/iscrizioni-polo-infanzia-2026-2027.jpg" download>Scarica immagine</a>
+              <a class="button button-secondary" href="assets/home/iscrizioni-polo-infanzia-2026-2027.jpg" target="_blank" rel="noopener noreferrer">Apri immagine</a>
+            </div>
+          </div>
+          <div class="news-overlay-body">
+            <div class="news-chip-row">
+              <span class="news-chip">Polo d'Infanzia</span>
+              <span class="news-chip">A.S. 2026-2027</span>
+            </div>
+            <h3 id="news-title-iscrizioni-polo-2026">Iscrizioni Aperte Polo d’Infanzia “Don Bosco”</h3>
+            <p>
+              Aperte le iscrizioni per l’anno scolastico <strong>2026-2027</strong> del Polo d’Infanzia
+              <strong>“Don Bosco”</strong>.
+            </p>
+            <p>
+              Per approfondire le informazioni dedicate alle due realtà educative, puoi raggiungere direttamente
+              le pagine specifiche qui sotto.
+            </p>
+            <div class="news-links">
+              <a class="button button-primary" href="nido.html">Vai al Nido</a>
+              <a class="button button-secondary" href="scuola-materna.html">Vai alla Scuola dell'Infanzia</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container footer-wrap">
         <p>Parrocchia di Pieve Cesato</p>
-        <p>Sito demo iniziale, pronto da completare con contenuti reali.</p>
+        <p>Sito pronto per news e aggiornamenti</p>
       </div>
     </footer>
 
