@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CREE 2026 — Parrocchia di Pieve Cesato</title>
+    <meta
+      name="description"
+      content="Pagina dedicata al CREE 2026 della Parrocchia di Pieve Cesato: date, orari, attività, riunione informativa e iscrizioni."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/site-icon.png" />
+    <style>
+      .site-nav a[href='index.html'] {
+        color: var(--brand);
+        background: rgba(41, 87, 211, 0.08);
+      }
+
+      .cree-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 5rem 0 2.5rem;
+      }
+
+      .cree-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(12, 26, 52, 0.82), rgba(12, 26, 52, 0.42)),
+          url('assets/cree/sfondo-cree.jpg') center/cover;
+        z-index: -2;
+      }
+
+      .cree-hero::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 170px;
+        background: linear-gradient(180deg, rgba(246, 247, 251, 0), var(--bg));
+        z-index: -1;
+      }
+
+      .cree-hero-grid,
+      .cree-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+        gap: 1.7rem;
+      }
+
+      .cree-hero-grid {
+        align-items: end;
+      }
+
+      .cree-hero-copy {
+        color: white;
+        padding: 1rem 0 3rem;
+      }
+
+      .cree-hero-copy .eyebrow {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .cree-hero-copy h1 {
+        font-size: clamp(2.9rem, 5vw, 5.2rem);
+        line-height: 0.95;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.045em;
+      }
+
+      .cree-hero-copy p {
+        max-width: 64ch;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1.05rem;
+        line-height: 1.78;
+      }
+
+      .cree-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+      }
+
+      .cree-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.85rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-weight: 600;
+      }
+
+      .cree-hero-card,
+      .cree-panel,
+      .cree-side-card,
+      .poster-card,
+      .activity-card,
+      .dates-card {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .cree-hero-card,
+      .cree-panel,
+      .cree-side-card,
+      .poster-card,
+      .dates-card {
+        padding: 1.7rem;
+      }
+
+      .cree-hero-card h2,
+      .cree-panel h2,
+      .cree-side-card h3,
+      .poster-card h2,
+      .dates-card h3,
+      .activity-card h3 {
+        letter-spacing: -0.03em;
+        margin-top: 0;
+      }
+
+      .cree-hero-card p,
+      .cree-panel p,
+      .cree-panel li,
+      .cree-side-card p,
+      .cree-side-card li,
+      .poster-card p,
+      .dates-card p,
+      .activity-card p {
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .quick-facts {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .quick-facts li {
+        display: grid;
+        grid-template-columns: 122px 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .quick-facts li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .quick-facts strong,
+      .date-item strong,
+      .activity-card strong {
+        color: var(--text);
+      }
+
+      .cree-intro {
+        margin-top: -0.5rem;
+      }
+
+      .stack {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .section-title {
+        margin: 0 0 0.9rem;
+        font-size: clamp(1.6rem, 2vw, 2.05rem);
+      }
+
+      .activities-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .activity-card {
+        padding: 1.25rem;
+        background: rgba(255, 255, 255, 0.84);
+      }
+
+      .activity-card h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.45rem;
+      }
+
+      .dates-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .date-item {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 0.9rem;
+        align-items: start;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .date-item:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .date-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(41, 87, 211, 0.08);
+        color: var(--brand);
+        font-size: 0.88rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .poster-card img {
+        width: min(100%, 560px);
+        display: block;
+        margin: 1rem auto 0;
+        border-radius: 20px;
+        border: 1px solid rgba(28, 36, 48, 0.08);
+        box-shadow: 0 18px 40px rgba(12, 26, 52, 0.14);
+      }
+
+      .poster-actions,
+      .cree-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.25rem;
+      }
+
+      .poster-actions .button-primary,
+      .cree-actions .button-primary {
+        color: white;
+      }
+
+      .cree-note {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 980px) {
+        .cree-hero-grid,
+        .cree-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .cree-hero {
+          padding-top: 3rem;
+        }
+
+        .quick-facts li,
+        .date-item {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+
+        .activities-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong></div></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+        <nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola dell'Infanzia</a><a href="circolo-anspi.html">Circolo Anspi</a></nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="cree-hero">
+        <div class="container cree-hero-grid">
+          <div class="cree-hero-copy">
+            <p class="eyebrow">Estate 2026 · Parrocchia di Pieve Cesato</p>
+            <h1>CREE 2026 — Il mondo è un grande circo.</h1>
+            <p>
+              Dal <strong>08 giugno al 24 luglio</strong> la Parrocchia di San Giovanni Battista in Pieve Cesato,
+              all’interno dell’Unità Pastorale <strong>“Granarolo”</strong>, propone un’estate fatta di gioco,
+              amicizia, movimento, creatività e momenti condivisi per <strong>bambini e ragazzi dalla 1ª elementare alla 3ª media</strong>.
+            </p>
+            <div class="cree-badges">
+              <span class="cree-badge">08 giugno → 24 luglio</span>
+              <span class="cree-badge">1ª elementare → 3ª media</span>
+              <span class="cree-badge">Lun–Ven · 8:00–17:00</span>
+            </div>
+          </div>
+
+          <aside class="cree-hero-card">
+            <p class="eyebrow">Informazioni rapide</p>
+            <h2>Quando, per chi e come</h2>
+            <ul class="quick-facts">
+              <li><strong>Periodo</strong><span>Dal <strong>08 giugno</strong> al <strong>24 luglio 2026</strong>.</span></li>
+              <li><strong>Partecipanti</strong><span><strong>Bambini e ragazzi</strong> dalla <strong>1ª elementare</strong> alla <strong>3ª media</strong>.</span></li>
+              <li><strong>Orario</strong><span>Dal <strong>lunedì al venerdì</strong>, dalle <strong>8:00 alle 17:00</strong>.</span></li>
+              <li><strong>Iscrizioni</strong><span>Aperte dal <strong>08/04/2026</strong> al <strong>06/05/2026</strong> o fino a esaurimento posti.</span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section cree-intro">
+        <div class="container cree-grid">
+          <article class="cree-panel">
+            <p class="eyebrow">Un’estate da vivere insieme</p>
+            <h2 class="section-title">Giornate piene di gioco, creatività e relazioni belle</h2>
+            <p>
+              Il CREE è pensato come un tempo ricco, allegro e ben accompagnato, dove ogni giornata mette insieme
+              esperienze diverse: <strong>giochi di gruppo</strong>, <strong>attività sportive</strong>,
+              <strong>laboratori artistici</strong>, <strong>momenti di preghiera</strong>, <strong>spazio compiti</strong>
+              e piccole occasioni di <strong>collaborazione “domestica”</strong> vissute in modo semplice e partecipato.
+            </p>
+            <p>
+              Il tema <strong>“Il mondo è un grande circo”</strong> dà il tono all’intero percorso: un’immagine viva,
+              colorata e piena di energia, che richiama stupore, movimento, fantasia e spirito di squadra. L’idea è
+              quella di creare un’estate in cui ogni bambino e ragazzo possa sentirsi parte di qualcosa di bello,
+              condiviso e ben organizzato.
+            </p>
+          </article>
+
+          <div class="stack">
+            <aside class="cree-side-card">
+              <p class="eyebrow">Stile educativo</p>
+              <h3>Responsabili, volontari e comunità</h3>
+              <p>
+                Le attività sono accompagnate da <strong>educatori responsabili</strong> e da <strong>giovani volontari</strong>,
+                in un clima che unisce cura, entusiasmo e attenzione alla crescita personale.
+              </p>
+              <p>
+                Il CREE non è soltanto un calendario di iniziative: è anche un’occasione concreta per stare insieme,
+                imparare a collaborare e vivere l’estate dentro una comunità accogliente.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-muted">
+        <div class="container cree-grid">
+          <article class="cree-panel">
+            <p class="eyebrow">La giornata al CREE</p>
+            <h2 class="section-title">Attività diverse, stesso spirito di squadra</h2>
+            <p>
+              Le giornate seguono un ritmo vivace ma ordinato, alternando momenti di movimento, creatività, ascolto e
+              condivisione. Ogni proposta contribuisce a costruire un’estate piena, mai monotona e capace di coinvolgere
+              età diverse con un linguaggio semplice e inclusivo.
+            </p>
+
+            <div class="activities-grid">
+              <article class="activity-card">
+                <h3>Giochi di gruppo</h3>
+                <p>Attività pensate per conoscersi, fare squadra e vivere insieme il tema del CREE in modo dinamico e coinvolgente.</p>
+              </article>
+              <article class="activity-card">
+                <h3>Sport e movimento</h3>
+                <p>Spazio per giocare, correre, mettersi in movimento e vivere il tempo estivo con energia positiva.</p>
+              </article>
+              <article class="activity-card">
+                <h3>Laboratori artistici</h3>
+                <p>Esperienze manuali e creative per dare forma alla fantasia, sperimentare e costruire qualcosa insieme.</p>
+              </article>
+              <article class="activity-card">
+                <h3>Momenti di preghiera</h3>
+                <p>Occasioni semplici e curate per custodire anche la dimensione spirituale del percorso estivo.</p>
+              </article>
+              <article class="activity-card">
+                <h3>Spazio compiti</h3>
+                <p>Un tempo dedicato ai compiti e al ripasso, dentro un contesto sereno e accompagnato.</p>
+              </article>
+              <article class="activity-card">
+                <h3>Collaborazione quotidiana</h3>
+                <p>Piccoli gesti condivisi e responsabilità semplici per imparare a partecipare e prendersi cura degli spazi comuni.</p>
+              </article>
+            </div>
+          </article>
+
+          <div class="stack">
+            <aside class="dates-card">
+              <p class="eyebrow">Date da ricordare</p>
+              <h3>Passaggi importanti prima dell’inizio</h3>
+              <div class="dates-list">
+                <div class="date-item">
+                  <div class="date-icon">i</div>
+                  <div>
+                    <strong>Riunione informativa</strong><br />
+                    <span><strong>Mercoledì 22 aprile</strong> alle <strong>20:45</strong>, presso la <strong>Chiesa della Parrocchia di Pieve Cesato</strong>.</span>
+                  </div>
+                </div>
+                <div class="date-item">
+                  <div class="date-icon">✦</div>
+                  <div>
+                    <strong>Apertura iscrizioni</strong><br />
+                    <span><strong>08/04/2026</strong></span>
+                  </div>
+                </div>
+                <div class="date-item">
+                  <div class="date-icon">⏳</div>
+                  <div>
+                    <strong>Chiusura iscrizioni</strong><br />
+                    <span><strong>06/05/2026</strong> oppure al raggiungimento dei posti disponibili.</span>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <aside class="cree-side-card">
+              <p class="eyebrow">Per chi è pensato</p>
+              <h3>Un’estate costruita per bambini e ragazzi</h3>
+              <p>
+                Il percorso è rivolto a chi sta vivendo gli anni della scuola primaria e della scuola media, con attività
+                che puntano a tenere insieme entusiasmo, amicizia e partecipazione.
+              </p>
+              <p class="cree-note">
+                L’iscrizione resta attiva <strong>fino a esaurimento posti</strong>: conviene quindi muoversi entro le date indicate.
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container cree-grid">
+          <article class="poster-card">
+            <p class="eyebrow">Volantino</p>
+            <h2 class="section-title">Materiale da condividere e consultare</h2>
+            <p>
+              Per avere sotto mano il promemoria visivo del CREE 2026, puoi aprire o scaricare la locandina già usata
+              nella homepage del sito.
+            </p>
+            <img src="assets/home/cree-2026.jpg" alt="Locandina CREE 2026 della Parrocchia di Pieve Cesato" />
+            <div class="poster-actions">
+              <a class="button button-primary" href="assets/home/cree-2026.jpg" download>Scarica il volantino</a>
+              <a class="button button-secondary" href="assets/home/cree-2026.jpg" target="_blank" rel="noopener noreferrer">Apri immagine</a>
+            </div>
+          </article>
+
+          <aside class="cree-side-card">
+            <p class="eyebrow">In sintesi</p>
+            <h3>Un’estate allegra, ordinata e piena di occasioni buone</h3>
+            <p>
+              Il CREE 2026 nasce per offrire ai ragazzi un tempo estivo ricco di esperienze semplici ma significative:
+              stare insieme, divertirsi, mettere in gioco energie e talenti, vivere la comunità e lasciarsi accompagnare
+              da adulti e giovani volontari in un contesto sereno.
+            </p>
+            <p>
+              Se vuoi rileggere le altre notizie della parrocchia o tornare alla panoramica generale del sito, puoi
+              rientrare direttamente dalla homepage.
+            </p>
+            <div class="cree-actions">
+              <a class="button button-primary" href="index.html#news">Torna alle news</a>
+              <a class="button button-secondary" href="index.html">Vai alla homepage</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>Parrocchia di Pieve Cesato</p>
+        <p>CREE 2026</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
