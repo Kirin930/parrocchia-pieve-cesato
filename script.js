@@ -33,6 +33,37 @@ const closeNewsOverlay = (id) => {
   document.body.classList.remove('news-open');
 };
 
+const newsFilterButtons = document.querySelectorAll('[data-news-filter]');
+const newsCards = document.querySelectorAll('[data-news-category]');
+
+if (newsFilterButtons.length && newsCards.length) {
+  const applyNewsFilter = (filter) => {
+    newsCards.forEach((card) => {
+      const categories = (card.getAttribute('data-news-category') || '')
+        .split(/[,\s]+/)
+        .map((item) => item.trim())
+        .filter(Boolean);
+      const shouldShow = filter === 'all' || categories.includes(filter);
+      card.classList.toggle('is-hidden', !shouldShow);
+      card.hidden = !shouldShow;
+    });
+
+    newsFilterButtons.forEach((button) => {
+      const isActive = button.getAttribute('data-news-filter') === filter;
+      button.classList.toggle('is-active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+  };
+
+  newsFilterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      applyNewsFilter(button.getAttribute('data-news-filter') || 'all');
+    });
+  });
+
+  applyNewsFilter('all');
+}
+
 document.querySelectorAll('[data-news-open]').forEach((card) => {
   const id = card.getAttribute('data-news-open');
 

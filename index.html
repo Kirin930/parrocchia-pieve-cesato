@@ -75,9 +75,46 @@
         margin-top: 1.7rem;
       }
 
+      .news-filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin: 1.2rem 0 1.5rem;
+      }
+
+      .news-filter-button {
+        appearance: none;
+        border: 1px solid rgba(41, 87, 211, 0.12);
+        background: rgba(255, 255, 255, 0.78);
+        color: var(--muted);
+        border-radius: 999px;
+        padding: 0.72rem 1rem;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+      }
+
+      .news-filter-button:hover {
+        transform: translateY(-1px);
+        color: var(--brand);
+        border-color: rgba(41, 87, 211, 0.22);
+      }
+
+      .news-filter-button.is-active {
+        color: white;
+        border-color: transparent;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: var(--shadow);
+      }
+
       .news-list {
         display: grid;
         gap: 1rem;
+      }
+
+      .news-card.is-hidden {
+        display: none;
       }
 
       .news-card {
@@ -343,8 +380,15 @@
             <!--<p>Qui compaiono gli aggiornamenti principali delle realtà educative e comunitarie della parrocchia.</p>-->
           </div>
 
+          <div class="news-filter-bar" aria-label="Filtra le news per sezione">
+            <button class="news-filter-button is-active" type="button" data-news-filter="all" aria-pressed="true">Tutte</button>
+            <button class="news-filter-button" type="button" data-news-filter="cree" aria-pressed="false">CREE</button>
+            <button class="news-filter-button" type="button" data-news-filter="polo" aria-pressed="false">Polo d'Infanzia</button>
+            <button class="news-filter-button" type="button" data-news-filter="anspi" aria-pressed="false">Circolo Anspi</button>
+          </div>
+
           <div class="news-list">
-            <article class="news-card" data-news-open="cree-2026" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-cree-2026">
+            <article class="news-card" data-news-open="cree-2026" data-news-category="cree" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-cree-2026">
               <img class="news-card-thumb" src="assets/home/cree-2026.jpg" alt="Locandina CREE 2026 Pieve Cesato" />
               <div>
                 <div class="news-chip-row">
@@ -357,7 +401,7 @@
               </div>
             </article>
 
-            <article class="news-card" data-news-open="iscrizioni-polo-2026" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-iscrizioni-polo-2026">
+            <article class="news-card" data-news-open="iscrizioni-polo-2026" data-news-category="polo" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-iscrizioni-polo-2026">
               <img class="news-card-thumb" src="assets/home/iscrizioni-polo-infanzia-2026-2027.jpg" alt="Locandina iscrizioni aperte Polo d'Infanzia Don Bosco" />
               <div>
                 <div class="news-chip-row">
@@ -370,7 +414,7 @@
               </div>
             </article>
 
-            <article class="news-card" data-news-open="pasquetta-anspi-2026" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-pasquetta-anspi-2026">
+            <article class="news-card" data-news-open="pasquetta-anspi-2026" data-news-category="anspi" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-pasquetta-anspi-2026">
               <img class="news-card-thumb" src="assets/home/pasquetta-circolo-anspi.jpeg" alt="Locandina Pasquetta Fuori Porta del Circolo Anspi" />
               <div>
                 <div class="news-chip-row">
@@ -383,7 +427,7 @@
               </div>
             </article>
 
-            <article class="news-card" data-news-open="orari-pasqua-anspi-2026" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-orari-pasqua-anspi-2026">
+            <article class="news-card" data-news-open="orari-pasqua-anspi-2026" data-news-category="anspi" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-orari-pasqua-anspi-2026">
               <img class="news-card-thumb" src="assets/home/orari-pasqua-circolo-anspi.jpeg" alt="Locandina con gli orari pasquali del Circolo Anspi" />
               <div>
                 <div class="news-chip-row">
