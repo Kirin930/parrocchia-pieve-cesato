@@ -278,6 +278,8 @@ a {
 
 .site-footer {
   padding: 2rem 0 3rem;
+  background: #2957d3;
+  color: white;
 }
 
 .footer-wrap {
@@ -285,7 +287,11 @@ a {
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.site-footer a {
+  color: inherit;
 }
 
 .page-hero {
