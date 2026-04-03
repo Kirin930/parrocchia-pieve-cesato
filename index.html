@@ -616,26 +616,27 @@
       <div class="section-cut" aria-hidden="true">
         <svg class="section-cut-svg" viewBox="0 0 1440 86" preserveAspectRatio="none" role="presentation" focusable="false">
           <defs>
-            <clipPath id="section-cut-wave-clip">
-              <path d="M0 24C160 34 300 34 470 20C610 10 830 10 970 20C1140 34 1280 34 1440 24V54C1280 64 1140 64 970 50C830 40 610 40 470 50C300 64 160 64 0 54V24Z" />
-            </clipPath>
-            <linearGradient id="section-cut-shadow-top" x1="0" y1="18" x2="0" y2="40" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#10214f" stop-opacity="0.32" />
-              <stop offset="1" stop-color="#10214f" stop-opacity="0" />
+            <linearGradient id="section-cut-shadow-top" x1="0" y1="24" x2="0" y2="30" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#16367c" stop-opacity="0.34" />
+              <stop offset="1" stop-color="#2957d3" stop-opacity="0" />
             </linearGradient>
-            <linearGradient id="section-cut-shadow-bottom" x1="0" y1="60" x2="0" y2="38" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#10214f" stop-opacity="0.28" />
-              <stop offset="1" stop-color="#10214f" stop-opacity="0" />
+            <linearGradient id="section-cut-shadow-bottom" x1="0" y1="54" x2="0" y2="48" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#16367c" stop-opacity="0.3" />
+              <stop offset="1" stop-color="#2957d3" stop-opacity="0" />
             </linearGradient>
           </defs>
           <path
             fill="#2957d3"
             d="M0 24C160 34 300 34 470 20C610 10 830 10 970 20C1140 34 1280 34 1440 24V54C1280 64 1140 64 970 50C830 40 610 40 470 50C300 64 160 64 0 54V24Z"
           />
-          <g clip-path="url(#section-cut-wave-clip)">
-            <rect x="0" y="18" width="1440" height="20" fill="url(#section-cut-shadow-top)" />
-            <rect x="0" y="38" width="1440" height="24" fill="url(#section-cut-shadow-bottom)" />
-          </g>
+          <path
+            fill="url(#section-cut-shadow-top)"
+            d="M0 24C160 34 300 34 470 20C610 10 830 10 970 20C1140 34 1280 34 1440 24L1440 29C1280 39 1140 39 970 25C830 15 610 15 470 25C300 39 160 39 0 29V24Z"
+          />
+          <path
+            fill="url(#section-cut-shadow-bottom)"
+            d="M0 54C160 64 300 64 470 50C610 40 830 40 970 50C1140 64 1280 64 1440 54L1440 49C1280 59 1140 59 970 45C830 35 610 35 470 45C300 59 160 59 0 49V54Z"
+          />
         </svg>
       </div>
 
