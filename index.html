@@ -313,6 +313,50 @@
         overflow: hidden;
       }
 
+      .section-break {
+        padding: 0.9rem 0 0.2rem;
+      }
+
+      .section-break-line {
+        position: relative;
+        display: block;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(41, 87, 211, 0), rgba(41, 87, 211, 0.18) 18%, rgba(41, 87, 211, 0.34) 50%, rgba(41, 87, 211, 0.18) 82%, rgba(41, 87, 211, 0));
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.82);
+      }
+
+      .section-break-line::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 94px;
+        height: 18px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, rgba(41, 87, 211, 0.12), rgba(107, 140, 255, 0.2));
+        border: 1px solid rgba(41, 87, 211, 0.14);
+        box-shadow: 0 12px 30px rgba(41, 87, 211, 0.1);
+      }
+
+      .section-break-line::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 0 0 6px rgba(41, 87, 211, 0.08);
+      }
+
+      .section-calendar {
+        padding-top: 3.4rem;
+        background: linear-gradient(180deg, rgba(41, 87, 211, 0.045) 0%, rgba(246, 247, 251, 0) 220px);
+      }
+
       .calendar-section-actions {
         display: flex;
         flex-wrap: wrap;
@@ -571,7 +615,13 @@
         </div>
       </section>
 
-      <section id="calendario" class="section">
+      <div class="section-break" aria-hidden="true">
+        <div class="container">
+          <span class="section-break-line"></span>
+        </div>
+      </div>
+
+      <section id="calendario" class="section section-calendar">
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Calendario</p>
