@@ -302,10 +302,86 @@
         overflow: hidden;
       }
 
+      .calendar-section-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.2rem;
+      }
+
+      .calendar-section-actions .button-primary {
+        color: white;
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .calendar-card {
+        padding: 1.35rem;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .calendar-card-wide {
+        grid-column: 1 / -1;
+      }
+
+      .calendar-card-featured {
+        border-color: rgba(41, 87, 211, 0.16);
+        background: linear-gradient(180deg, rgba(41, 87, 211, 0.06), rgba(255, 255, 255, 0.92));
+      }
+
+      .calendar-card h3 {
+        margin: 0.35rem 0 0.75rem;
+        letter-spacing: -0.03em;
+        font-size: clamp(1.3rem, 2vw, 1.7rem);
+      }
+
+      .calendar-card p,
+      .calendar-list span {
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .calendar-list {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .calendar-list li {
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .calendar-list li:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .calendar-list strong {
+        display: block;
+        color: var(--text);
+        margin-bottom: 0.18rem;
+      }
+
       @media (max-width: 860px) {
         .news-card,
-        .news-overlay-grid {
+        .news-overlay-grid,
+        .calendar-grid {
           grid-template-columns: 1fr;
+        }
+
+        .calendar-card-wide {
+          grid-column: auto;
         }
 
         .news-overlay-panel {
@@ -438,6 +514,129 @@
                 <p>Gli orari del circolo per Giovedì Santo, Venerdì Santo, Pasqua e Pasquetta.</p>
                 <span class="news-card-hint">Leggi la news</span>
               </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="calendario" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Calendario</p>
+            <h2>Celebrazioni della Settimana Santa e di Pasqua</h2>
+            <p>
+              Dal <strong>28 marzo al 5 aprile 2026</strong> trovi qui una versione chiara del calendario
+              delle Messe e dei principali appuntamenti dell’<strong>Unità Pastorale “Granarolo”</strong>,
+              con uno spazio dedicato anche alle celebrazioni di <strong>Pieve Cesato</strong> e delle altre parrocchie.
+            </p>
+            <div class="calendar-section-actions">
+              <a class="button button-primary" href="assets/documenti/calendario-unita-pastorale-28-marzo-5-aprile-2026.pdf" download>Scarica il PDF</a>
+              <a class="button button-secondary" href="assets/documenti/calendario-unita-pastorale-28-marzo-5-aprile-2026.pdf" target="_blank" rel="noopener noreferrer">Apri il calendario</a>
+            </div>
+          </div>
+
+          <div class="calendar-grid">
+            <article class="calendar-card calendar-card-wide">
+              <div class="news-chip-row">
+                <span class="news-chip">Unità Pastorale “Granarolo”</span>
+                <span class="news-chip">28 marzo – 5 aprile 2026</span>
+              </div>
+              <h3>Appuntamenti comuni</h3>
+              <p>
+                Momenti condivisi di adorazione, confessioni e preghiera per vivere insieme la Settimana Santa
+                nelle diverse chiese dell’Unità Pastorale.
+              </p>
+              <ul class="calendar-list">
+                <li><strong>Lunedì 30 marzo · ore 20:30–21:30 · Fossolo</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
+                <li><strong>Martedì 31 marzo · ore 20:30–21:30 · Sant’Andrea</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
+                <li><strong>Mercoledì 1 aprile · ore 20:30–21:30 · Pieve Cesato</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
+                <li><strong>Giovedì 2 aprile · ore 9:30 · Cattedrale</strong><span>S. Messa crismale.</span></li>
+                <li><strong>Venerdì 3 aprile · ore 8:30 · Granarolo</strong><span>Preghiera dell’Ufficio delle Letture e delle Lodi.</span></li>
+                <li><strong>Venerdì 3 aprile · ore 15:00 · Casette</strong><span>Via Crucis per i bambini della Catechesi di Granarolo e Pieve Cesato.</span></li>
+                <li><strong>Sabato 4 aprile · ore 8:30 · Granarolo</strong><span>Preghiera dell’Ufficio delle Letture e delle Lodi.</span></li>
+                <li><strong>Sabato 4 aprile · confessioni</strong><span>Dalle <strong>9:30 alle 12:00</strong> a Granarolo e dalle <strong>15:00 alle 18:00</strong> a Pieve Cesato.</span></li>
+              </ul>
+            </article>
+
+            <article class="calendar-card calendar-card-featured">
+              <div class="news-chip-row">
+                <span class="news-chip">Pieve Cesato</span>
+                <span class="news-chip">San Giovanni Battista</span>
+              </div>
+              <h3>Parrocchia di San Giovanni Battista</h3>
+              <p>
+                Il calendario delle celebrazioni di Pieve Cesato per la Domenica delle Palme, il Triduo Pasquale e la Domenica di Pasqua.
+              </p>
+              <ul class="calendar-list">
+                <li><strong>Sabato 28 marzo · ore 20:00</strong><span>S. Messa prefestiva per i defunti Achille Babini e genitori, Paolina e Angelo Pezzi.</span></li>
+                <li><strong>Domenica 29 marzo · ore 10:00</strong><span>S. Messa per le anime del Purgatorio.</span></li>
+                <li><strong>Mercoledì 1 aprile · ore 20:00</strong><span>S. Messa per i defunti Elda Gambi e Francesco Chiarini.</span></li>
+                <li><strong>Mercoledì 1 aprile · ore 20:30–21:30</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
+                <li><strong>Giovedì 2 aprile · ore 20:30</strong><span>S. Messa in Coena Domini; a seguire Confessioni fino alle 22:30 per i defunti parroci, cappellani e rettori di Pieve Cesato e Fossolo.</span></li>
+                <li><strong>Venerdì 3 aprile · ore 20:30</strong><span>Liturgia della Passione e Confessioni fino alle 22:00.</span></li>
+                <li><strong>Sabato 4 aprile · ore 15:00–18:00</strong><span>Confessioni.</span></li>
+                <li><strong>Sabato 4 aprile · ore 21:00</strong><span>Veglia Pasquale.</span></li>
+                <li><strong>Domenica 5 aprile · ore 10:00</strong><span>S. Messa per il defunto Romano Chiarini.</span></li>
+              </ul>
+            </article>
+
+            <article class="calendar-card">
+              <div class="news-chip-row">
+                <span class="news-chip">Granarolo Faentino</span>
+                <span class="news-chip">San Giovanni Evangelista</span>
+              </div>
+              <h3>Parrocchia di San Giovanni Evangelista</h3>
+              <p>
+                Messe, liturgie e momenti di preghiera previsti a Granarolo Faentino nella Settimana Santa.
+              </p>
+              <ul class="calendar-list">
+                <li><strong>Sabato 28 marzo · ore 18:00</strong><span>S. Messa prefestiva per la defunta Annamaria Chirico.</span></li>
+                <li><strong>Domenica 29 marzo · ore 10:30</strong><span>S. Rosario per i governanti.</span></li>
+                <li><strong>Domenica 29 marzo · ore 11:00</strong><span>S. Messa per i defunti Eliliana e Paolo Venturini.</span></li>
+                <li><strong>Lunedì 30 marzo</strong><span>Non c’è la S. Messa delle ore 8:30.</span></li>
+                <li><strong>Giovedì 2 aprile · ore 20:30</strong><span>S. Messa in Coena Domini e Confessioni fino alle 22:30 per i defunti parroci e cappellani di Granarolo e Sant’Andrea.</span></li>
+                <li><strong>Venerdì 3 aprile · ore 8:30</strong><span>Preghiera dell’Ufficio delle Letture e delle Lodi.</span></li>
+                <li><strong>Venerdì 3 aprile · ore 20:30</strong><span>Liturgia della Passione e Confessioni fino alle 22:00.</span></li>
+                <li><strong>Sabato 4 aprile · ore 8:30</strong><span>Preghiera dell’Ufficio delle Letture e delle Lodi.</span></li>
+                <li><strong>Sabato 4 aprile · ore 9:30–12:00</strong><span>Confessioni.</span></li>
+                <li><strong>Sabato 4 aprile · ore 21:00</strong><span>Veglia Pasquale.</span></li>
+                <li><strong>Domenica 5 aprile · ore 10:30</strong><span>S. Rosario per le vocazioni di speciale consacrazione.</span></li>
+                <li><strong>Domenica 5 aprile · ore 11:00</strong><span>S. Messa per il defunto mons. Giuseppe Gambi.</span></li>
+              </ul>
+            </article>
+
+            <article class="calendar-card">
+              <div class="news-chip-row">
+                <span class="news-chip">Sant’Andrea</span>
+                <span class="news-chip">Panigale</span>
+              </div>
+              <h3>Parrocchia di Sant’Andrea in Panigale</h3>
+              <p>
+                Il calendario della parrocchia per la Domenica delle Palme, il Martedì Santo e la Pasqua.
+              </p>
+              <ul class="calendar-list">
+                <li><strong>Domenica 29 marzo · ore 9:00</strong><span>S. Messa per i defunti Guerrina e Domenico Peroni.</span></li>
+                <li><strong>Martedì 31 marzo · ore 20:00</strong><span>S. Messa per gli iscritti alla Compagnia di S. Antonio abate e Candelora di Sant’Andrea.</span></li>
+                <li><strong>Martedì 31 marzo · ore 20:30–21:30</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
+                <li><strong>Domenica 5 aprile · ore 9:00</strong><span>S. Messa per i defunti Irma Tassinari e Luigi Mazzotti.</span></li>
+              </ul>
+            </article>
+
+            <article class="calendar-card">
+              <div class="news-chip-row">
+                <span class="news-chip">Fossolo</span>
+                <span class="news-chip">San Pietro in Vinculis</span>
+              </div>
+              <h3>Parrocchia di San Pietro in Vinculis</h3>
+              <p>
+                Gli orari delle celebrazioni di Fossolo nel periodo tra la Domenica delle Palme e la Pasqua.
+              </p>
+              <ul class="calendar-list">
+                <li><strong>Domenica 29 marzo · ore 9:30</strong><span>S. Messa per la defunta Maria Sevadei Casalini.</span></li>
+                <li><strong>Lunedì 30 marzo · ore 20:00</strong><span>S. Messa per la defunta Caterina Cicognani.</span></li>
+                <li><strong>Lunedì 30 marzo · ore 20:30–21:30</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
+                <li><strong>Domenica 5 aprile · ore 9:30</strong><span>S. Messa per i defunti della Compagnia SS.ma Annunziata di Fossolo.</span></li>
+              </ul>
             </article>
           </div>
         </div>
