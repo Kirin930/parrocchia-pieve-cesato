@@ -313,48 +313,52 @@
         overflow: hidden;
       }
 
-      .section-break {
-        padding: 0.9rem 0 0.2rem;
+      #news,
+      .section-calendar {
+        position: relative;
+        z-index: 1;
       }
 
-      .section-break-line {
+      .section-cut {
+        position: relative;
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        margin: -1rem 0 -1.3rem;
+        pointer-events: none;
+      }
+
+      .section-cut-bar {
         position: relative;
         display: block;
-        height: 1px;
-        background: linear-gradient(90deg, rgba(41, 87, 211, 0), rgba(41, 87, 211, 0.18) 18%, rgba(41, 87, 211, 0.34) 50%, rgba(41, 87, 211, 0.18) 82%, rgba(41, 87, 211, 0));
-        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.82);
-      }
-
-      .section-break-line::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 94px;
+        width: min(calc(100vw - 1.25rem), 1500px);
         height: 18px;
         border-radius: 999px;
-        background: linear-gradient(135deg, rgba(41, 87, 211, 0.12), rgba(107, 140, 255, 0.2));
-        border: 1px solid rgba(41, 87, 211, 0.14);
-        box-shadow: 0 12px 30px rgba(41, 87, 211, 0.1);
+        background: linear-gradient(90deg, rgba(41, 87, 211, 0.96) 0%, rgba(107, 140, 255, 0.9) 34%, rgba(143, 166, 255, 0.84) 50%, rgba(107, 140, 255, 0.9) 66%, rgba(41, 87, 211, 0.96) 100%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.34), 0 16px 34px rgba(41, 87, 211, 0.18);
       }
 
-      .section-break-line::after {
+      .section-cut-bar::before {
         content: '';
         position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: linear-gradient(135deg, var(--brand), var(--brand-2));
-        box-shadow: 0 0 0 6px rgba(41, 87, 211, 0.08);
+        inset: -8px 28px;
+        border-radius: inherit;
+        background: linear-gradient(90deg, rgba(41, 87, 211, 0.18), rgba(107, 140, 255, 0.28), rgba(41, 87, 211, 0.18));
+        filter: blur(18px);
+        z-index: -1;
+      }
+
+      .section-cut-bar::after {
+        content: '';
+        position: absolute;
+        inset: 1px;
+        border-radius: inherit;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        opacity: 0.78;
       }
 
       .section-calendar {
-        padding-top: 3.4rem;
-        background: linear-gradient(180deg, rgba(41, 87, 211, 0.045) 0%, rgba(246, 247, 251, 0) 220px);
+        padding-top: 3.1rem;
       }
 
       .calendar-section-actions {
@@ -487,6 +491,23 @@
       }
 
       @media (max-width: 760px) {
+        .section-cut {
+          margin: -0.85rem 0 -1.05rem;
+        }
+
+        .section-cut-bar {
+          width: calc(100vw - 1rem);
+          height: 15px;
+        }
+
+        .section-cut-bar::before {
+          inset: -7px 18px;
+        }
+
+        .section-calendar {
+          padding-top: 2.7rem;
+        }
+
         .home-hero {
           min-height: 68vh;
         }
@@ -615,10 +636,8 @@
         </div>
       </section>
 
-      <div class="section-break" aria-hidden="true">
-        <div class="container">
-          <span class="section-break-line"></span>
-        </div>
+      <div class="section-cut" aria-hidden="true">
+        <span class="section-cut-bar"></span>
       </div>
 
       <section id="calendario" class="section section-calendar">
