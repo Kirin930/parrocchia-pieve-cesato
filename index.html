@@ -453,10 +453,82 @@
         margin-bottom: 0.18rem;
       }
 
+
+      .section-giornalino {
+        position: relative;
+        padding-top: 3.15rem;
+      }
+
+      .giornalino-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 1rem;
+        align-items: stretch;
+      }
+
+      .giornalino-card {
+        padding: 1.35rem;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .giornalino-preview-card {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .giornalino-preview-frame-wrap {
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid rgba(41, 87, 211, 0.12);
+        background: linear-gradient(180deg, rgba(233, 239, 255, 0.9), rgba(255, 255, 255, 0.96));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      }
+
+      .giornalino-preview-frame {
+        display: block;
+        width: 100%;
+        min-height: 620px;
+        border: 0;
+        background: white;
+      }
+
+      .giornalino-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .giornalino-text-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .giornalino-text-card h3 {
+        margin: 0.35rem 0 0.9rem;
+        letter-spacing: -0.03em;
+        font-size: clamp(1.5rem, 2.2vw, 2rem);
+      }
+
+      .giornalino-text-card p {
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      .giornalino-callout {
+        margin-top: 0.5rem;
+        color: var(--text);
+      }
+
       @media (max-width: 860px) {
         .news-card,
         .news-overlay-grid,
-        .calendar-grid {
+        .calendar-grid,
+        .giornalino-layout {
           grid-template-columns: 1fr;
         }
 
@@ -477,8 +549,13 @@
           margin: -2rem calc(50% - 50vw) -1.9rem;
         }
 
-        .section-calendar {
+        .section-calendar,
+        .section-giornalino {
           padding-top: 2.8rem;
+        }
+
+        .giornalino-preview-frame {
+          min-height: 460px;
         }
 
         .home-hero {
@@ -740,6 +817,70 @@
                 <li><strong>Lunedì 30 marzo · ore 20:30–21:30</strong><span>Adorazione Eucaristica e Confessioni.</span></li>
                 <li><strong>Domenica 5 aprile · ore 9:30</strong><span>S. Messa per i defunti della Compagnia SS.ma Annunziata di Fossolo.</span></li>
               </ul>
+            </article>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="section-cut" aria-hidden="true">
+        <svg class="section-cut-svg" viewBox="0 0 1440 86" preserveAspectRatio="none" role="presentation" focusable="false">
+          <path
+            fill="#2957d3"
+            d="M0 24C160 34 300 34 470 20C610 10 830 10 970 20C1140 34 1280 34 1440 24V54C1280 64 1140 64 970 50C830 40 610 40 470 50C300 64 160 64 0 54V24Z"
+          />
+        </svg>
+      </div>
+
+      <section id="giornalino" class="section section-giornalino">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Giornalino</p>
+            <h2>La Nostra Pieve</h2>
+            <p>
+              L’ultima uscita del giornalino parrocchiale, da leggere online oppure da scaricare in PDF.
+            </p>
+          </div>
+
+          <div class="giornalino-layout">
+            <article class="giornalino-card giornalino-preview-card">
+              <div class="news-chip-row">
+                <span class="news-chip">La Nostra Pieve</span>
+                <span class="news-chip">Santa Pasqua</span>
+              </div>
+              <div class="giornalino-preview-frame-wrap">
+                <iframe
+                  class="giornalino-preview-frame"
+                  src="assets/documenti/giornalino-la-nostra-pieve-santa-pasqua-2026.pdf#page=1&view=FitH&toolbar=0&navpanes=0&scrollbar=0"
+                  title="Anteprima del giornalino La Nostra Pieve - Santa Pasqua"
+                  loading="lazy"
+                ></iframe>
+              </div>
+              <div class="giornalino-actions">
+                <a class="button button-primary" href="assets/documenti/giornalino-la-nostra-pieve-santa-pasqua-2026.pdf" download>Scarica il PDF</a>
+                <a class="button button-secondary" href="assets/documenti/giornalino-la-nostra-pieve-santa-pasqua-2026.pdf" target="_blank" rel="noopener noreferrer">Apri il giornalino</a>
+              </div>
+            </article>
+
+            <article class="giornalino-card giornalino-text-card">
+              <div class="news-chip-row">
+                <span class="news-chip">Parrocchia di Pieve Cesato</span>
+                <span class="news-chip">Ultima uscita</span>
+              </div>
+              <h3>Un modo semplice per restare aggiornati sulla vita della comunità</h3>
+              <p>
+                <em>La Nostra Pieve</em> è uno dei mezzi di comunicazione della Parrocchia di Pieve Cesato.
+                Raccoglie spunti di riflessione, racconti di alcuni eventi vissuti dalla comunità e anticipazioni
+                sugli appuntamenti futuri, accompagnando la vita parrocchiale anche fuori dagli incontri in presenza.
+              </p>
+              <p>
+                È un modo classico e senza tempo per rimanere aggiornati sugli eventi organizzati in parrocchia,
+                custodire la memoria di ciò che si è vissuto insieme e ritrovare in poche pagine notizie, volti e
+                riferimenti utili per la comunità.
+              </p>
+              <p class="giornalino-callout">
+                Scarica l’<strong>ultima uscita</strong> oppure aprila direttamente dal sito per leggerla con calma.
+              </p>
             </article>
           </div>
         </div>
