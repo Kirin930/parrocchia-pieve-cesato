@@ -328,32 +328,10 @@
         position: relative;
         z-index: 1;
         width: 100vw;
-        height: 86px;
-        margin: -2.1rem calc(50% - 50vw) -2.2rem;
+        height: clamp(180px, 50vw, 300px);
+        margin: -2.25rem calc(50% - 50vw) -2.35rem;
         pointer-events: none;
         overflow: hidden;
-      }
-
-      .section-cut::before,
-      .section-cut::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 10px;
-        z-index: 2;
-        filter: blur(6px);
-        opacity: 0.55;
-      }
-
-      .section-cut::before {
-        top: 2px;
-        background: linear-gradient(180deg, rgba(28, 36, 48, 0.12), rgba(28, 36, 48, 0));
-      }
-
-      .section-cut::after {
-        bottom: 2px;
-        background: linear-gradient(0deg, rgba(28, 36, 48, 0.1), rgba(28, 36, 48, 0));
       }
 
       .section-cut-svg {
@@ -499,18 +477,12 @@
 
       @media (max-width: 760px) {
         .section-cut {
-          height: 66px;
-          margin: -1.35rem calc(50% - 50vw) -1.45rem;
-        }
-
-        .section-cut::before,
-        .section-cut::after {
-          height: 8px;
-          filter: blur(5px);
+          height: clamp(180px, 62vw, 240px);
+          margin: -2rem calc(50% - 50vw) -1.9rem;
         }
 
         .section-calendar {
-          padding-top: 2.6rem;
+          padding-top: 2.8rem;
         }
 
         .home-hero {
@@ -643,10 +615,27 @@
 
       <div class="section-cut" aria-hidden="true">
         <svg class="section-cut-svg" viewBox="0 0 1440 86" preserveAspectRatio="none" role="presentation" focusable="false">
+          <defs>
+            <clipPath id="section-cut-wave-clip">
+              <path d="M0 24C160 34 300 34 470 20C610 10 830 10 970 20C1140 34 1280 34 1440 24V54C1280 64 1140 64 970 50C830 40 610 40 470 50C300 64 160 64 0 54V24Z" />
+            </clipPath>
+            <linearGradient id="section-cut-shadow-top" x1="0" y1="18" x2="0" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#10214f" stop-opacity="0.32" />
+              <stop offset="1" stop-color="#10214f" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="section-cut-shadow-bottom" x1="0" y1="60" x2="0" y2="38" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#10214f" stop-opacity="0.28" />
+              <stop offset="1" stop-color="#10214f" stop-opacity="0" />
+            </linearGradient>
+          </defs>
           <path
             fill="#2957d3"
             d="M0 24C160 34 300 34 470 20C610 10 830 10 970 20C1140 34 1280 34 1440 24V54C1280 64 1140 64 970 50C830 40 610 40 470 50C300 64 160 64 0 54V24Z"
           />
+          <g clip-path="url(#section-cut-wave-clip)">
+            <rect x="0" y="18" width="1440" height="20" fill="url(#section-cut-shadow-top)" />
+            <rect x="0" y="38" width="1440" height="24" fill="url(#section-cut-shadow-bottom)" />
+          </g>
         </svg>
       </div>
 
