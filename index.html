@@ -655,10 +655,24 @@
             <button class="news-filter-button is-active" type="button" data-news-filter="all" aria-pressed="true">Tutte</button>
             <button class="news-filter-button" type="button" data-news-filter="cree" aria-pressed="false">CREE</button>
             <button class="news-filter-button" type="button" data-news-filter="polo" aria-pressed="false">Polo d'Infanzia</button>
+            <button class="news-filter-button" type="button" data-news-filter="campo" aria-pressed="false">Campo</button>
             <button class="news-filter-button" type="button" data-news-filter="anspi" aria-pressed="false">Circolo Anspi</button>
           </div>
 
           <div class="news-list">
+            <article class="news-card" data-news-open="campo-elementari-2026" data-news-category="campo" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-campo-elementari-2026">
+              <img class="news-card-thumb" src="assets/home/campo-elementari-2026.jpg" alt="Locandina Campo Estivo Elementari 2026" />
+              <div>
+                <div class="news-chip-row">
+                  <span class="news-chip">Campo Estivo</span>
+                  <span class="news-chip">2–8 Agosto 2026</span>
+                </div>
+                <h3>Campo Estivo Elementari 2026: una settimana in montagna</h3>
+                <p>Sette giorni di avventura, natura e amicizia a Marradi per bambini dalla 3ª alla 5ª elementare.</p>
+                <span class="news-card-hint">Leggi la news</span>
+              </div>
+            </article>
+
             <article class="news-card" data-news-open="cree-2026" data-news-category="cree" tabindex="0" role="button" aria-haspopup="dialog" aria-controls="news-overlay-cree-2026">
               <img class="news-card-thumb" src="assets/home/cree-2026.jpg" alt="Locandina CREE 2026 Pieve Cesato" />
               <div>
@@ -873,6 +887,47 @@
         </div>
       </section>
     </main>
+
+    <div class="news-overlay" id="news-overlay-campo-elementari-2026" aria-hidden="true">
+      <div class="news-overlay-backdrop" data-news-close="campo-elementari-2026"></div>
+      <div class="news-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="news-title-campo-elementari-2026">
+        <button class="news-close" type="button" aria-label="Chiudi news" data-news-close="campo-elementari-2026">×</button>
+        <div class="news-overlay-grid">
+          <div class="news-overlay-media">
+            <img src="assets/home/campo-elementari-2026.jpg" alt="Locandina Campo Estivo Elementari 2026" />
+            <div class="share-actions">
+              <a class="button button-primary" href="assets/home/campo-elementari-2026.jpg" download>Scarica immagine</a>
+              <a class="button button-secondary" href="assets/home/campo-elementari-2026.jpg" target="_blank" rel="noopener noreferrer">Apri immagine</a>
+            </div>
+          </div>
+          <div class="news-overlay-body">
+            <div class="news-chip-row">
+              <span class="news-chip">Campo Estivo</span>
+              <span class="news-chip">2–8 Agosto 2026</span>
+            </div>
+            <h3 id="news-title-campo-elementari-2026">Campo Estivo Elementari 2026: una settimana in montagna</h3>
+            <p>
+              Dal <strong>2 all'8 agosto 2026</strong> torna il campo estivo elementari della parrocchia di Pieve Cesato:
+              una settimana di vita comunitaria, escursioni, giochi e momenti condivisi tra i boschi e le colline di <strong>Marradi</strong>.
+            </p>
+            <p>
+              Il campo è rivolto ai bambini dalla <strong>3ª alla 5ª elementare</strong> e si svolge presso la
+              <strong>Coop AUREA</strong> a Collecchio, Marradi. La quota di partecipazione è di <strong>200 €</strong>
+              (100 € di caparra all'iscrizione + 100 € l'ultimo giorno).
+            </p>
+            <p>
+              Per iscriversi è sufficiente compilare il modulo e inviarlo a
+              <strong><a href="mailto:campeggiopievecesato@gmail.com">campeggiopievecesato@gmail.com</a></strong>.
+              Le iscrizioni vengono accettate fino a esaurimento posti. Per informazioni contattare
+              <strong>Lucia</strong> al <strong><a href="tel:+393348858637">334 885 8637</a></strong>.
+            </p>
+            <div class="news-links">
+              <a class="button button-primary" href="campeggio.html">Vai alla pagina del Campeggio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="news-overlay" id="news-overlay-iscrizioni-polo-2026" aria-hidden="true">
       <div class="news-overlay-backdrop" data-news-close="iscrizioni-polo-2026"></div>
