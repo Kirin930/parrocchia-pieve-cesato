@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prescuola 2026 — Parrocchia di Pieve Cesato</title>
+    <meta
+      name="description"
+      content="Pagina dedicata al Prescuola 2026 presso la Parrocchia di Pieve Cesato: periodo, orari, iscrizioni e informazioni di contatto."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/site-icon.png" />
+    <style>
+      .site-nav a[href='prescuola.html'] {
+        color: var(--brand);
+        background: rgba(41, 87, 211, 0.08);
+      }
+
+      .prescuola-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 5rem 0 2.5rem;
+      }
+
+      .prescuola-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(12, 26, 52, 0.84), rgba(12, 26, 52, 0.48)),
+          url('assets/cree/sfondo-cree.jpg') center/cover;
+        z-index: -2;
+      }
+
+      .prescuola-hero::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 170px;
+        background: linear-gradient(180deg, rgba(246, 247, 251, 0), var(--bg));
+        z-index: -1;
+      }
+
+      .prescuola-hero-grid,
+      .prescuola-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+        gap: 1.7rem;
+      }
+
+      .prescuola-hero-grid {
+        align-items: end;
+      }
+
+      .prescuola-hero-copy {
+        color: white;
+        padding: 1rem 0 3rem;
+      }
+
+      .prescuola-hero-copy .eyebrow {
+        color: rgba(255, 255, 255, 0.78);
+      }
+
+      .prescuola-hero-copy h1 {
+        font-size: clamp(3rem, 5vw, 5.2rem);
+        line-height: 0.95;
+        margin: 0 0 1.2rem;
+        letter-spacing: -0.045em;
+      }
+
+      .prescuola-hero-copy p {
+        max-width: 64ch;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 1.05rem;
+        line-height: 1.78;
+      }
+
+      .prescuola-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.5rem;
+      }
+
+      .prescuola-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.85rem 1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-weight: 600;
+      }
+
+      .prescuola-hero-card,
+      .prescuola-panel,
+      .prescuola-side-card,
+      .poster-card,
+      .date-card {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(12px);
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+      }
+
+      .prescuola-hero-card,
+      .prescuola-panel,
+      .prescuola-side-card,
+      .poster-card,
+      .date-card {
+        padding: 1.7rem;
+      }
+
+      .prescuola-hero-card h2,
+      .prescuola-panel h2,
+      .prescuola-side-card h3,
+      .poster-card h2,
+      .date-card h3 {
+        letter-spacing: -0.03em;
+        margin-top: 0;
+      }
+
+      .prescuola-hero-card p,
+      .prescuola-panel p,
+      .prescuola-panel li,
+      .prescuola-side-card p,
+      .date-card p,
+      .date-card li,
+      .poster-card p {
+        color: var(--muted);
+        line-height: 1.72;
+      }
+
+      .quick-facts {
+        list-style: none;
+        padding: 0;
+        margin: 1.2rem 0 0;
+        display: grid;
+        gap: 0.9rem;
+      }
+
+      .quick-facts li {
+        display: grid;
+        grid-template-columns: 122px 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .quick-facts li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .quick-facts strong,
+      .date-item strong {
+        color: var(--text);
+      }
+
+      .prescuola-intro {
+        margin-top: -0.5rem;
+      }
+
+      .stack {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .section-title {
+        margin: 0 0 0.9rem;
+        font-size: clamp(1.6rem, 2vw, 2.05rem);
+      }
+
+      .date-list {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .date-item {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 0.9rem;
+        align-items: start;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .date-item:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .date-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        background: rgba(41, 87, 211, 0.08);
+        color: var(--brand);
+        font-size: 0.88rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .poster-card img {
+        width: min(100%, 520px);
+        display: block;
+        margin: 1rem auto 0;
+        border-radius: 20px;
+        border: 1px solid rgba(28, 36, 48, 0.08);
+        box-shadow: 0 18px 40px rgba(12, 26, 52, 0.14);
+      }
+
+      .poster-actions,
+      .prescuola-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.25rem;
+      }
+
+      .prescuola-hero-card .prescuola-actions .button {
+        flex: 1 1 100%;
+      }
+
+      .poster-actions .button-primary,
+      .prescuola-actions .button-primary {
+        color: white;
+      }
+
+      .prescuola-note {
+        margin-top: 1rem;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 980px) {
+        .prescuola-hero-grid,
+        .prescuola-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .prescuola-hero {
+          padding-top: 3rem;
+        }
+
+        .quick-facts li,
+        .date-item {
+          grid-template-columns: 1fr;
+          gap: 0.35rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html"><span class="brand-mark">✦</span><div><strong>Parrocchia di Pieve Cesato</strong></div></a>
+        <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+        <nav id="site-nav" class="site-nav"><a href="index.html">Home</a><a href="nido.html">Nido</a><a href="scuola-materna.html">Scuola dell'Infanzia</a><a href="prescuola.html">Prescuola</a><a href="campeggio.html">Campeggio</a><a href="circolo-anspi.html">Circolo Anspi</a><a href="https://www.sagracampagna.it/" target="_blank" rel="noopener noreferrer">Sagra della Campagna</a></nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="prescuola-hero">
+        <div class="container prescuola-hero-grid">
+          <div class="prescuola-hero-copy">
+            <p class="eyebrow">Parrocchia Pieve Cesato &middot; Unità Pastorale Granarolo</p>
+            <h1>Prescuola 2026</h1>
+            <p>
+              Un servizio presso la <strong>Parrocchia di Pieve Cesato</strong> per accompagnare le giornate prima della ripresa scolastica,
+              dal <strong>31 agosto</strong> all’<strong>11 settembre 2026</strong>.
+            </p>
+            <div class="prescuola-badges">
+              <span class="prescuola-badge">31/08 → 11/09</span>
+              <span class="prescuola-badge">Lun–Ven</span>
+              <span class="prescuola-badge">8:00–17:00</span>
+            </div>
+          </div>
+
+          <aside class="prescuola-hero-card">
+            <p class="eyebrow">Informazioni rapide</p>
+            <h2>Periodo, orari e iscrizioni</h2>
+            <ul class="quick-facts">
+              <li><strong>Periodo</strong><span>Dal <strong>31 agosto</strong> all’<strong>11 settembre 2026</strong>.</span></li>
+              <li><strong>Giorni</strong><span>Dal <strong>lunedì</strong> al <strong>venerdì</strong>.</span></li>
+              <li><strong>Orario</strong><span>Dalle <strong>8:00</strong> alle <strong>17:00</strong>.</span></li>
+              <li><strong>Luogo</strong><span>Presso la <strong>Parrocchia Pieve Cesato</strong>.</span></li>
+              <li><strong>Iscrizioni</strong><span>Dal <strong>3</strong> al <strong>21 agosto</strong>.</span></li>
+              <li><strong>Info</strong><span><strong>Cristina</strong> <a href="tel:+393280377072">328 0377072</a>.</span></li>
+            </ul>
+            <div class="prescuola-actions">
+              <a class="button button-primary" href="assets/prescuola/modulo-iscrizione-prescuola-2026.pdf" download>Scarica il modulo d’iscrizione</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section prescuola-intro">
+        <div class="container prescuola-grid">
+          <article class="prescuola-panel">
+            <p class="eyebrow">Prima della scuola</p>
+            <h2 class="section-title">Un tempo organizzato in parrocchia prima dell’inizio delle lezioni</h2>
+            <p>
+              Il <strong>Prescuola 2026</strong> si svolge presso la Parrocchia di Pieve Cesato e copre il periodo
+              dal <strong>31 agosto</strong> all’<strong>11 settembre</strong>, con apertura dal lunedì al venerdì.
+            </p>
+            <p>
+              L'orario pieno, dalle <strong>8:00</strong> alle <strong>17:00</strong>, è pensato per offrire
+              alle famiglie un riferimento pratico nelle giornate che precedono la ripartenza scolastica.
+            </p>
+          </article>
+
+          <div class="stack">
+            <aside class="prescuola-side-card">
+              <p class="eyebrow">Modulo</p>
+              <h3>Come iscriversi</h3>
+              <p>
+                Il modulo compilato deve essere inviato <strong>solo via e-mail</strong> all’indirizzo
+                <strong><a href="mailto:creepievecesato@gmail.com">creepievecesato@gmail.com</a></strong>.
+              </p>
+              <p class="prescuola-note">
+                Le iscrizioni sono aperte da <strong>lunedì 3 agosto</strong> fino a <strong>venerdì 21 agosto</strong>.
+                Verranno accettate fino a un massimo di <strong>40 iscritti</strong>, dando precedenza alle domande
+                arrivate prima in ordine temporale.
+              </p>
+              <p class="prescuola-note">
+                Il pagamento della quota, non restituibile, deve avvenire anticipatamente o al massimo entro il primo
+                giorno di Prescuola, in <strong>contanti</strong>. Per informazioni: <strong>Cristina</strong>,
+                <a href="tel:+393280377072">328 0377072</a>.
+              </p>
+              <div class="prescuola-actions">
+                <a class="button button-primary" href="assets/prescuola/modulo-iscrizione-prescuola-2026.pdf" download>Scarica il modulo</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container prescuola-grid">
+          <article class="poster-card">
+            <p class="eyebrow">Volantino</p>
+            <h2 class="section-title">Materiale da consultare e condividere</h2>
+            <p>
+              Puoi aprire o scaricare il volantino originale del Prescuola 2026.
+            </p>
+            <img src="assets/prescuola/volantino-prescuola-2026.jpg" alt="Volantino Prescuola 2026 presso la Parrocchia Pieve Cesato" />
+            <div class="poster-actions">
+              <a class="button button-primary" href="assets/prescuola/volantino-prescuola-2026.pdf" download>Scarica PDF</a>
+              <a class="button button-secondary" href="assets/prescuola/volantino-prescuola-2026.jpg" target="_blank" rel="noopener noreferrer">Apri immagine</a>
+            </div>
+          </article>
+
+          <aside class="prescuola-side-card">
+            <p class="eyebrow">Navigazione</p>
+            <h3>Torna alle altre pagine della parrocchia</h3>
+            <p>
+              Dalla homepage puoi ritrovare le news, il calendario e le altre pagine dedicate alle attività della comunità.
+            </p>
+            <div class="prescuola-actions">
+              <a class="button button-primary" href="index.html">Vai alla homepage</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <p>Parrocchia di Pieve Cesato</p>
+        <p>Prescuola</p>
+        <p><a href="privacy-policy.html">Privacy Policy</a></p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
